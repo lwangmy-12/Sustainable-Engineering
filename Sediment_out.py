@@ -100,7 +100,7 @@ print(state_summary)
 import matplotlib.pyplot as plt
 
 # ------------------------------------------------------------
-# Load the annual results
+# Load the annual results (created earlier)
 # ------------------------------------------------------------
 annual_loads = pd.read_csv("Output/Annual_Sediment_Nutrient_Loads.csv")
 
