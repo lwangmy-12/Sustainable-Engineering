@@ -1,0 +1,3360 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Record created using version 2.0.8 of the USGS Metadata Wizard tool. (https://github.com/DOI-USGS/fort-pymdwizard)-->
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>Matthew J. Komiskey</origin>
+        <origin>Todd D. Stuntebeck</origin>
+        <origin>Luke C. Loken</origin>
+        <origin>Krista A. Hood</origin>
+        <origin>Mari E. Danz</origin>
+        <origin>Cynthia M. Rachol</origin>
+        <origin>Chad A. Toussant</origin>
+        <origin>Edward G. Dobrowolski</origin>
+        <origin>Andrew J. Kowalczk</origin>
+        <origin>Ryan P. Ennis</origin>
+        <origin>Sarah A. Mahanic</origin>
+        <origin>Matthew J. Hardebeck</origin>
+        <origin>Isaac J. Mevis</origin>
+        <origin>Rebecca B. Carvin</origin>
+        <pubdate>20210520</pubdate>
+        <title>Nutrient and sediment concentrations, loads, yields, and rainfall characteristics at USGS surface and subsurface-tile edge-of-field agricultural monitoring sites in Great Lakes States (ver. 3.0, November 2024)</title>
+        <edition>ver. 3.0, September 2024</edition>
+        <geoform>tabular digital data</geoform>
+        <pubinfo>
+          <pubplace>Reston, VA</pubplace>
+          <publish>U.S. Geological Survey</publish>
+        </pubinfo>
+        <onlink>https://doi.org/10.5066/P9LO8O70</onlink>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>This data release provides computed rainfall (rain total, duration, intensity, erosivity and antecedent rainfall) and flow (flow volume, flow-weighted mean concentrations, total loads, and total yields) metrics from monitored precipitation, discharge, and water quality (nutrients and sediment concentrations) data collected at U.S. Geological Survey edge-of-field (EOF) monitoring sites located in five Great Lakes States (Wisconsin, Michigan, Ohio, Indiana, and New York). EOF monitoring sites are installed at the edge of agricultural fields, either on the field surface or using subsurface tiles, where runoff can be intercepted and channeled through monitoring equipment before it enters the natural stream system. The methods used to collect this data followed USGS EOF monitoring methods (https://pubs.usgs.gov/of/20081015/). These EOF monitoring sites are located at private farms under a variety of farming systems, landscape settings, drainage areas, soil types, and climates. Site information is provided in the ‘EOF_Site_Table.csv’ data table.
+
+Rainfall metrics were computed for EOF site locations and are provided in the ‘All_EOF_RainEvents.csv’ data table. Rainfall was directly monitored at many, but not every EOF monitoring site. EOF monitoring sites without on-site rainfall data were associated to rainfall data measured at a nearby EOF monitoring site or meteorological site. Rainfall was combined into a single event if it occurred within 2 hours of the previous rainfall. 
+
+Flow data were computed for each flow event at each EOF monitoring site and are available in the ‘All_EOF_StormEventLoadsFormatted.csv’ data table. A flow event was defined as any period of flow at a site that was classified as a storm and represents flow that was related to rainfall or snowmelt. There were occurrences of continuous flow between rain events, which were not associated with a period of rainfall or snowmelt, likely due to excessive soil saturation or shallow groundwater discharge. These periods of intermittent tile discharge were not classified as a storm. 
+
+Multiple precipitation and flow events were combined if they occurred within two hours of each other to account for similar rainfall/runoff characteristics. Rainfall metrics and flow data were then calculated for these combined events at each EOF monitoring site and available in the ‘All_EOF_StormEventLoadsRainCalculated.csv’ data table.</abstract>
+      <purpose>Precipitation, discharge, and water quality (nutrients and sediment concentrations) data were collected at U.S. Geological Survey edge-of-field (EOF) monitoring sites located in five Great Lakes States (Wisconsin, Michigan, Ohio, Indiana, and New York). This data release combines flow totals with sampled sediment and nutrient concentrations to produce flow-weighted concentrations, total loads, and total yields for each distinct flow event. These data support five local, state, and federal cooperative programs (Great Lakes Restoration Initiative – Priority Watersheds, University of Wisconsin Discovery Farms, University of Wisconsin-Platteville Pioneer Farm, Sand County Foundation, and Mississippi River Basin Initiative) with goals of characterizing agricultural influences on water quality and/or documenting water-quality changes attributable to conservation practice implementation. Specifically, edge-of-field monitoring was conducted year-round to evaluate flow characteristics among seasons and variation in weather, field conditions, and agricultural activities.</purpose>
+      <supplinf>Original version (available from Point of Contact) - May 2021;
+First revision (version 2.0) - September, 2022;
+Second revision (version 2.1) - September 2023;
+Third revision (version 3.0; current) - September 2024</supplinf>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <rngdates>
+          <begdate>20020308</begdate>
+          <enddate>20231001</enddate>
+        </rngdates>
+      </timeinfo>
+      <current>ground condition</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>Annually</update>
+    </status>
+    <spdom>
+      <descgeog>World</descgeog>
+      <bounding>
+        <westbc>-91.3843</westbc>
+        <eastbc>-72.4219</eastbc>
+        <northbc>46.0732</northbc>
+        <southbc>40.0444</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>ISO 19115 Topic Category</themekt>
+        <themekey>farming</themekey>
+      </theme>
+      <theme>
+        <themekt>USGS Thesaurus</themekt>
+        <themekey>water quality</themekey>
+        <themekey>suspended material (water)</themekey>
+        <themekey>nutrient content (water)</themekey>
+        <themekey>agriculture</themekey>
+        <themekey>runoff</themekey>
+        <themekey>precipitation (atmospheric)</themekey>
+        <themekey>field inventory and monitoring</themekey>
+        <themekey>erosion</themekey>
+      </theme>
+      <theme>
+        <themekt>USGS Metadata Identifier</themekt>
+        <themekey>USGS:5fcaa045d34e30b91238941f</themekey>
+      </theme>
+      <place>
+        <placekt>Common geographic areas</placekt>
+        <placekey>Great Lakes</placekey>
+        <placekey>Wisconsin</placekey>
+        <placekey>Michigan</placekey>
+        <placekey>Indiana</placekey>
+        <placekey>Ohio</placekey>
+        <placekey>New York</placekey>
+      </place>
+    </keywords>
+    <accconst>None.  Please see 'Distribution Info' for details.</accconst>
+    <useconst>None.  Users are advised to read the dataset's metadata thoroughly to understand appropriate use and data limitations.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>U.S. Geological Survey, Upper Midwest Water Science Center</cntorg>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>1 Gifford Pinchot Dr</address>
+          <city>Madison</city>
+          <state>WI</state>
+          <postal>53726</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>608-828-9901</cntvoice>
+      </cntinfo>
+    </ptcontac>
+    <datacred>Great Lakes Restoration Initiative – Priority Watersheds (GLRI; https://wim.usgs.gov/geonarrative/glri-eof/);
+University of Wisconsin Discovery Farms (http://www.uwdiscoveryfarms.org/);
+University of Wisconsin-Platteville Pioneer Farm (https://www.uwplatt.edu/department/pioneer-farm);
+Sand County Foundation (https://sandcountyfoundation.org/);
+Mississippi River Basin Initiative (MRBI; https://www.nrcs.usda.gov/wps/portal/nrcs/detailfull/national/home/?cid=STELPRDB1048200)</datacred>
+    <crossref>
+      <citeinfo>
+        <origin>Todd D. Stuntebeck</origin>
+        <origin>Matthew J. Komiskey</origin>
+        <origin>David W. Owens</origin>
+        <origin>David W. Hall</origin>
+        <pubdate>20080520</pubdate>
+        <title>Methods of Data Collection, Sample Processing, and Data Analysis for Edge-of-Field, Streamgaging, Subsurface-Tile, and Meteorological Stations at Discovery Farms and Pioneer Farm in Wisconsin, 2001–7</title>
+        <geoform>publication</geoform>
+        <serinfo>
+          <sername>U.S. Geological Survey Open File Report</sername>
+          <issue>2008-1015</issue>
+        </serinfo>
+        <othercit>Stuntebeck, T.D., Komiskey, M.J., Owens, D.W., and Hall, D.W., 2008, Methods of Data Collection, Sample Processing, and Data Analysis for Edge-of-Field, Streamgaging, Subsurface-Tile, and Meteorological Stations at Discovery Farms and Pioneer Farm in Wisconsin, 2001–7: U.S. Geological Survey Open-File Report 2008-1015, 51p.</othercit>
+        <onlink>https://doi.org/10.3133/ofr20081015</onlink>
+      </citeinfo>
+    </crossref>
+    <crossref>
+      <citeinfo>
+        <origin>W.H. Wischmeier</origin>
+        <origin>D.D. Smith</origin>
+        <pubdate>1978</pubdate>
+        <title>Predicting Rainfall Erosion Losses: A guide to conservation planning</title>
+        <geoform>publication</geoform>
+        <serinfo>
+          <sername>U.S Department of Agriculture, Agriculture Handbook</sername>
+          <issue>537</issue>
+        </serinfo>
+        <othercit>Wischmeier, W.H., and Smith, D.D., 1978, Predicting rainfall erosion losses—a guide to conservation planning: U.S. Department of Agriculture Agriculture Handbook Number 537, 58 p.</othercit>
+        <onlink>https://handle.nal.usda.gov/10113/CAT79706928 (Accessed 08/11/2024)</onlink>
+      </citeinfo>
+    </crossref>
+    <crossref>
+      <citeinfo>
+        <origin>W.H. Wischmeier</origin>
+        <origin>D.D. Smith</origin>
+        <pubdate>1981</pubdate>
+        <title>Supplement and Errata in Predicting rainfall erosion losses—A guide to conservation planning</title>
+        <geoform>publication</geoform>
+        <serinfo>
+          <sername>U.S Department of Agriculture, Agriculture Handbook</sername>
+          <issue>537</issue>
+        </serinfo>
+        <othercit>Wischmeier, W.H., and Smith, D.D., 1981, Supplement and Errata in Predicting rainfall erosion losses—A guide to conservation planning: U.S. Department of Agriculture Agriculture Handbook Number 537, 58 pp.</othercit>
+        <onlink>https://www.ars.usda.gov/ARSUserFiles/60600505/RUSLE/AH_537%20Predicting%20Rainfall%20Soil%20Losses.pdf (Accessed 08/11/2024)</onlink>
+      </citeinfo>
+    </crossref>
+    <crossref>
+      <citeinfo>
+        <origin>K.C. McGregor</origin>
+        <origin>R.L. Binger</origin>
+        <origin>A.J. Bowie</origin>
+        <origin>G.R. Foster</origin>
+        <pubdate>1995</pubdate>
+        <title>Erosivity index values for Northern Mississippi</title>
+        <geoform>publication</geoform>
+        <othercit>McGregor, K.C., Binger, R.L., Bowie, A.J., and Foster, G.R., 1995, Erosivity index values for northern Mississippi: Transactions of the  American Society of Agricultural and Biological Engineers, v. 38, no.4, p. 1039-1047.</othercit>
+        <onlink>https://doi.org/10.13031/2013.27921</onlink>
+      </citeinfo>
+    </crossref>
+    <crossref>
+      <citeinfo>
+        <origin>Jon Dewitz</origin>
+        <pubdate>20210615</pubdate>
+        <title>National Land Cover Database (NLCD) 2019 Land Cover Products</title>
+        <geoform>publication</geoform>
+        <othercit>Dewitz, J., and U.S. Geological Survey, 2021, National Land Cover Database (NLCD) 2019 Products (ver. 2.0, June 2021): U.S. Geological Survey data release, https://doi.org/10.5066/P9KZCM54.</othercit>
+        <onlink>https://doi.org/10.5066/P9KZCM54</onlink>
+      </citeinfo>
+    </crossref>
+    <crossref>
+      <citeinfo>
+        <origin>NRCS Soil Survey Staff</origin>
+        <pubdate>2021</pubdate>
+        <title>Web Soil Survey</title>
+        <geoform>publication</geoform>
+        <othercit>Soil Survey Staff, Natural Resources Conservation Service, United States Department of Agriculture. Web Soil Survey. Available online at http://websoilsurvey.nrcs.usda.gov/</othercit>
+        <onlink>http://websoilsurvey.nrcs.usda.gov/</onlink>
+      </citeinfo>
+    </crossref>
+  </idinfo>
+  <dataqual>
+    <attracc>
+      <attraccr>No formal attribute accuracy tests were conducted.</attraccr>
+    </attracc>
+    <logic>All attributes were checked for outliers and if data were within the allowed range for the data.</logic>
+    <complete>Data set is considered complete for the information presented, as described in the abstract. Users are advised to read the rest of the metadata record carefully for additional details</complete>
+    <posacc>
+      <horizpa>
+        <horizpar>No formal positional accuracy tests were conducted</horizpar>
+      </horizpa>
+      <vertacc>
+        <vertaccr>No formal positional accuracy tests were conducted</vertaccr>
+      </vertacc>
+    </posacc>
+    <lineage>
+      <procstep>
+        <procdesc>Site Information:
+General site information for Edge-of-field (EOF) and precipitation monitoring sites was provided by the USGS National Water Information System at https://dx.doi.org/10.5066/F7P55KJN. Farming practices that take place on the agricultural field for each EOF monitoring site were obtained through conversations with farm operators. Land use data were obtained from the National Land cover Database (Dewitz, 2021). Primary soil type was obtained from the National Resources Conservation Service Soil Survey (NRCS, 2021).</procdesc>
+        <procdate>2024</procdate>
+      </procstep>
+      <procstep>
+        <procdesc>Field Methods and Data Analysis:
+EOF monitoring data including precipitation, discharge, and water-quality (nutrient and sediment concentrations) data were collected and processed using the methods in Stuntebeck and others (2008). Discharge, derived from stage, and water-quality data were collected at each EOF monitoring site, while precipitation data was directly monitored at several EOF sites. Water-quality data were analyzed at the University of Wisconsin-Stevens Point Water and Environmental Analysis Lab (WEAL). Precipitation and discharge data were analyzed using methods in Stuntebeck and others (2008). All these data are available in the USGS National Water Information System at https://dx.doi.org/10.5066/F7P55KJN. Water-quality concentration data were provided at the resolution (i.e., significant digits) reported by the laboratory.</procdesc>
+        <procdate>2024</procdate>
+      </procstep>
+      <procstep>
+        <procdesc>Flow Metric Calculations:
+Flow metrics were calculated for each flow event using discharge and water-quality data collected from at each EOF monitoring site per methods in Stuntebeck and others (2008). 
+- Runoff volumes were calculated for each sample collected during an event by summing the time-series discharge values, in cubic feet per second, by the appropriate time period, in seconds, and reported in cubic feet (CF; Stuntebeck and others, 2008).
+- Loads were calculated for each runoff event by multiplying the analyte flow-weighted mean concentration in milligrams per liter (mg/L), runoff volume (CF), and two-unit conversions (28.3168 L/CF and 1 pound per 453592 mg) and reported in pounds. If the analyte concentration result value was below the method detection limit (i.e. left censored), half the detection limit was used in the load calculation.
+- Estimated loads were calculated for runoff events when samples were not collected to compute an annual load. Event-mean concentrations from the sampled runoff event that most represented the qualities of the unsampled event were used as estimates for unsampled events in the load calculation (Stuntebeck and others 2008). Estimated loads are denoted in the data so they can easily be removed for event-based analysis.
+- Yields were calculated for each runoff event by dividing the analyte load by the site catchment (or drainage) area and reported in pounds/acre.</procdesc>
+        <procdate>2024</procdate>
+      </procstep>
+      <procstep>
+        <procdesc>Rainfall Metric Calculations:
+Rainfall metrics were calculated using methods in Wischmeier and Smith (1978 and 1981) and McGregor and others (1995) for each rainfall event using precipitation data collected from sites monitoring precipitation. As previously mentioned in processing step 2, EOF monitoring sites in close proximity shared precipitation data.
+- Intensity for each event was calculated by dividing the total amount of rain from the event by the length of time (‘duration’) of the event and reported in inches per hour (in/hr).
+- Maximum interval intensity for each event was calculated using 5, 10, 15, 30, and 60 minute intervals.
+- Rainfall energy for each event was calculated using two methods: 1) McGregor and others (1995) and 2) Wischmeier and Smith (1978 and 1981).
+- Rainfall erosivity for each event was calculated using two methods: 1) McGregor and others (1995) and 2) Wischmeier and Smith (1978 and 1981).
+- Antecedent rainfall (ARF) for each event was calculated by taking the sum of the total amount of rain for a period of days (not events) before the beginning of the event associated with the flow event and reported in inches.</procdesc>
+        <procdate>2024</procdate>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <eainfo>
+    <detailed>
+      <enttyp>
+        <enttypl>All_EOF_RainEvents.csv</enttypl>
+        <enttypd>Comma Separated Value (CSV) file containing rain event data collected from USGS sites monitoring precipitation data and computed rainfall metrics.</enttypd>
+        <enttypds>Producer Defined</enttypds>
+      </enttyp>
+      <attr>
+        <attrlabl>USGS_Station_Number_for_Precipitation</attrlabl>
+        <attrdef>Unique USGS site number where precipitation data was collected and associated with the edge-of-field monitoring site identified in the‘USGS_Station_Number’, ‘Field_Name’ and/or ‘All_Field_Names’ columns within the ‘EOF_Site_Table.csv’ and ‘All_EOF_StormEventLoadsRainCalculated.csv’ data tables.</attrdef>
+        <attrdefs>USGS Water Data for the Nation</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>USGS Water Data for the Nation</codesetn>
+            <codesets>https://dx.doi.org/10.5066/F7P55KJN</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+  <attrlabl>project</attrlabl><attrdef>Cooperative Program</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>DiscoveryFarms</edomv>
+      <edomvd>University of Wisconsin Discovery Farms</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>GLRI</edomv>
+      <edomvd>Great Lakes Restoration Initiative</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>MRBI</edomv>
+      <edomvd>Mississippi River Basin Initiative</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>NRCS</edomv>
+      <edomvd>Natural Resources Conservation Service</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>PioneerFarm</edomv>
+      <edomvd>University of Wisconsin Platteville Pioneer Farm</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>SandCounty</edomv>
+      <edomvd>Sand County Foundation</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+        <attrlabl>All_Field_Names</attrlabl>
+        <attrdef>Unique short names for each edge-of-field monitoring site associated to the USGS sites monitoring precipitation data in 'USGS_Station_Number_for_Precipitation'</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Site information for each field name can be found in the 'EOF_Site_Table.csv' data table. Multiple field names are separated by "|". May include numbers, letters, and/or characters.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>StartDate</attrlabl>
+        <attrdef>Date and time when rain event started in mm/dd/yyyy HH:MM</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Date and time in two-digit month/two-digit day/four-digit year two-digit hour:two-digit minute in Universal Time Coordinated (UTC) time zone</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>EndDate</attrlabl>
+        <attrdef>Date and time when rain event ended in mm/dd/yyyy HH:MM</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Date and time in two-digit month/two-digit day/four-digit year two-digit hour:two-digit minute in Universal Time Coordinated (UTC) time zone</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>rain</attrlabl>
+        <attrdef>Total rain amount monitored at the USGS site monitoring precipitation identified in ‘USGS_Station_Number_for_Precipitation’ and associated to distinct rain event indicated in the 'StartDate' and 'EndDate' columns.</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Total amount of precipitation measured, in inches</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>duration</attrlabl>
+        <attrdef>Duration of rain event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>no data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: hours. NA occurs when rain depth is 0.01 because it indicates there was only one tip of the tipping bucket, therefore duration cannot be computed.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Ievent</attrlabl>
+        <attrdef>Rainfall intensity over the entire rain event calculated by dividing 'rain' by 'duration'</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: inches per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>I5</attrlabl>
+        <attrdef>Maximum 5-minute rainfall intensity of rain event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: inches per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>I10</attrlabl>
+        <attrdef>Maximum 10-minute rainfall intensity of rain event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: inches per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>I15</attrlabl>
+        <attrdef>Maximum 15-minute rainfall intensity of rain event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: inches per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>I30</attrlabl>
+        <attrdef>Maximum 30-minute rainfall intensity of rain event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: inches per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>I60</attrlabl>
+        <attrdef>Maximum 60-minute rainfall intensity of rain event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: inches per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>energy_m1</attrlabl>
+        <attrdef>Calculated rainfall energy to drive erosion using McGregor (1995)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: foot-ton X inch per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>erosivity_m1</attrlabl>
+        <attrdef>Calculated erosive power of the rainfall using McGregor (1995)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: 100 X foot-ton X inch per acre per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>energy_m2</attrlabl>
+        <attrdef>Calculated rainfall energy to drive erosion using formulas based on Wischmeier and Smith (1979 and 1981)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: foot-ton X inch per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>erosivity_m2</attrlabl>
+        <attrdef>Calculated erosive power of the rainfall using formulas based on Wischmeier and Smith (1979 and 1981)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: 100 X foot-ton X inch per acre per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ARFdays1</attrlabl>
+        <attrdef>The Antecedent RainFall (ARF) depth calculated by summing the total precipitation monitored for a period of one day before the beginning of the indicated rain event in ‘StartDate’</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Cumulative depth of rain in inches</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ARFdays2</attrlabl>
+        <attrdef>The Antecedent RainFall (ARF) depth calculated by summing the total precipitation monitored for a period of two days before the beginning of the indicated rain event in ‘StartDate’</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Cumulative depth of rain in inches</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ARFdays7</attrlabl>
+        <attrdef>The Antecedent RainFall (ARF) depth calculated by summing the total precipitation monitored for a period of seven days before the beginning of the indicated rain event in ‘StartDate’</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Cumulative depth of rain in inches</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ARFdays14</attrlabl>
+        <attrdef>The Antecedent RainFall (ARF) depth calculated by summing the total precipitation monitored for a period of fourteen days before the beginning of the indicated rain event in ‘StartDate’</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Cumulative depth of rain in inches</udom>
+        </attrdomv>
+      </attr>
+    </detailed>
+    <detailed>
+      <enttyp>
+        <enttypl>All_EOF_StormEventLoadsFormatted.csv</enttypl>
+        <enttypd>Comma Separated Value (CSV) file containing water-quality and flow data collected at edge-of-field monitoring sites for flow events and calculated flow metrics data.</enttypd>
+        <enttypds>Producer Defined</enttypds>
+      </enttyp>
+      <attr>
+        <attrlabl>USGS_Station_Number</attrlabl>
+        <attrdef>Unique USGS edge-of-field monitoring site number where hydrological data is collected</attrdef>
+        <attrdefs>USGS Water Data for the Nation</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>USGS Water Data for the Nation</codesetn>
+            <codesets>https://dx.doi.org/10.5066/F7P55KJN</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Field_Name</attrlabl>
+        <attrdef>Unique short name for 'USGS_Station_Number'</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Unique values, may include numbers, letters, and/or characters.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+  <attrlabl>project</attrlabl><attrdef>Cooperative Program</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>DiscoveryFarms</edomv>
+      <edomvd>University of Wisconsin Discovery Farms</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>GLRI</edomv>
+      <edomvd>Great Lakes Restoration Initiative – Priority Watersheds</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>MRBI</edomv>
+      <edomvd>Mississippi River Basin Initiative</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>NRCS</edomv>
+      <edomvd>Natural Resources Conservation Service</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>PioneerFarm</edomv>
+      <edomvd>University of Wisconsin-Platteville Pioneer Farm</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>SandCounty</edomv>
+      <edomvd>Sand County Foundation</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>discrete</attrlabl><attrdef>Indicator that water-quality sample was a discrete sample</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>0</edomv>
+      <edomvd>Water-quality sample was not discrete and sub-samples were combined to represent the entire flow event</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>1</edomv>
+      <edomvd>Water-quality sample was discrete and represents one point in time and not the entire flow event</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>estimated</attrlabl><attrdef>Indicator that event water-quality concentration was estimated as described in process step 3.</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>0</edomv>
+      <edomvd>Data are reported from the lab and not estimated</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>1</edomv>
+      <edomvd>Data are estimated</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>frozen</attrlabl><attrdef>Indicator that the event occurred when ground was frozen at any depth</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>0</edomv>
+      <edomvd>The ground was not frozen during the event</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>1</edomv>
+      <edomvd>The ground was frozen during the event</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>storm</attrlabl><attrdef>Indicator of the type of flow associated with this event: baseflow or storm flow.</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>0</edomv>
+      <edomvd>The flow in this event is associated with baseflow, groundwater flow, melting snow, or melting frozen ground and not a monitored precipitation event</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>1</edomv>
+      <edomvd>The flow in this event is associated with a monitored precipitation event (rain, snow, or sleet)</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+        <attrlabl>unique_storm_number</attrlabl>
+        <attrdef>Unique flow event identifier</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Unique values, may include numbers, letters, and/or characters</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>storm_start</attrlabl>
+        <attrdef>Date and time when the flow event started</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Date and time in two-digit month/two-digit day/four-digit year two-digit hour:two-digit minute in Universal Time Coordinated (UTC) time zone</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>storm_end</attrlabl>
+        <attrdef>Date and time when the flow event ended</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Date and time in two-digit month/two-digit day/four-digit year two-digit hour:two-digit minute in Universal Time Coordinated (UTC) time zone</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>runoff_volume</attrlabl>
+        <attrdef>Total runoff volume per flow event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Volume in cubic feet</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>peak_discharge</attrlabl>
+        <attrdef>Maximum discharge per flow event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>peak discharge not measured</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Discharge in cubic feet per second</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>suspended_sediment_load_pounds</attrlabl>
+        <attrdef>Suspended sediment load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>chloride_load_pounds</attrlabl>
+        <attrdef>Chloride load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>nitrate_plus_nitrite_load_pounds</attrlabl>
+        <attrdef>Nitrate plus nitrite (as nitrogen) load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ammonia_plus_ammonium_load_pounds</attrlabl>
+        <attrdef>Ammonia plus ammonium load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_Kjeldahl_nitrogen_unfiltered_load_pounds</attrlabl>
+        <attrdef>Total Kjeldahl nitrogen-unfiltered load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>orthophosphate_load_pounds</attrlabl>
+        <attrdef>Orthophosphate (as phosphorus) load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_phosphorus_unfiltered_load_pounds</attrlabl>
+        <attrdef>Total phosphorus-unfiltered load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_nitrogen_load_pounds</attrlabl>
+        <attrdef>Total nitrogen load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>organic_nitrogen_load_pounds</attrlabl>
+        <attrdef>Organic nitrogen load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>dissolved_organic_carbon_load_pounds</attrlabl>
+        <attrdef>Dissolved organic carbon load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_organic_carbon_load_pounds</attrlabl>
+        <attrdef>Total organic carbon load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_Kjeldahl_nitrogen_filtered_load_pounds</attrlabl>
+        <attrdef>Total Kjeldahl nitrogen-filtered load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_phosphorus_filtered_load_pounds</attrlabl>
+        <attrdef>Total phosphorus-filtered load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_dissolved_solids_load_pounds</attrlabl>
+        <attrdef>Total dissolved solids load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_solids_load_pounds</attrlabl>
+        <attrdef>Total solids load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_suspended_solids_load_pounds</attrlabl>
+        <attrdef>Total suspended solids load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_volatile_suspended_solids_load_pounds</attrlabl>
+        <attrdef>Total volatile suspended solids load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>suspended_sediment_conc_mgL</attrlabl>
+        <attrdef>Suspended sediment concentration reported by the analyzing laboratory USGS NWIS parameter code 80154</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>chloride_conc_mgL</attrlabl>
+        <attrdef>Chloride concentration reported by the analyzing laboratory; USGS NWIS parameter code 00940</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>nitrate_plus_nitrite_conc_mgL</attrlabl>
+        <attrdef>Nitrate plus nitrite concentration (as nitrogen) reported by the analyzing laboratory; USGS NWIS parameter code 00631</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ammonia_plus_ammonium_conc_mgL</attrlabl>
+        <attrdef>Ammonia plus ammonium concentration reported by the analyzing laboratory; USGS NWIS parameter code 00608</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_Kjeldahl_nitrogen_unfiltered_conc_mgL</attrlabl>
+        <attrdef>Total Kjeldahl-unfiltered concentration reported by the analyzing laboratory; USGS NWIS parameter code 00625</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>orthophosphate_conc_mgL</attrlabl>
+        <attrdef>Orthophosphate concentration (as phosphorus) reported by the analyzing laboratory; USGS NWIS parameter code 00671</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_phosphorus_unfiltered_conc_mgL</attrlabl>
+        <attrdef>Total phosphorus concentration reported by the analyzing laboratory; USGS NWIS parameter code 00665</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_nitrogen_conc_mgL</attrlabl>
+        <attrdef>Total nitrogen concentration reported by the analyzing laboratory; USGS NWIS parameter code 00600</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>organic_nitrogen_conc_mgL</attrlabl>
+        <attrdef>Organic nitrogen concentration reported by the analyzing laboratory; USGS NWIS parameter code 00605</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>dissolved_organic_carbon_conc_mgL</attrlabl>
+        <attrdef>Dissolved organic carbon concentration reported by the analyzing laboratory; USGS NWIS parameter code 00681</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_organic_carbon_conc_mgL</attrlabl>
+        <attrdef>Total organic carbon concentration reported by the analyzing laboratory; USGS NWIS parameter code 00680</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_Kjeldahl_nitrogen_filtered_conc_mgL</attrlabl>
+        <attrdef>Total Kjeldahl nitrogen-filtered concentration reported by the analyzing laboratory; USGS NWIS parameter code 00623</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_phosphorus_filtered_conc_mgL</attrlabl>
+        <attrdef>Total phosphorus-filtered concentration reported by the analyzing laboratory; USGS NWIS parameter code 00666</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_dissolved_solids_conc_mgL</attrlabl>
+        <attrdef>Total dissolved solids concentration reported by the analyzing laboratory; USGS NWIS parameter code 70300</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_solids_conc_mgL</attrlabl>
+        <attrdef>Total solids concentration reported by the analyzing laboratory; USGS NWIS parameter code 00500</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_suspended_solids_conc_mgL</attrlabl>
+        <attrdef>Total suspended solids concentration reported by the analyzing laboratory; USGS NWIS parameter code 00530</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_volatile_suspended_solids_conc_mgL</attrlabl>
+        <attrdef>Total volatile suspended solids concentration reported by the analyzing laboratory; USGS NWIS parameter code 00535</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+  <attrlabl>remark_suspended_sediment</attrlabl><attrdef>Remark code associated with the suspended sediment analysis in 'suspended_sediment_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_chloride</attrlabl><attrdef>Remark code associated with the chloride analysis 'chloride_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_nitrate_plus_nitrite</attrlabl><attrdef>Remark code associated with the nitrate plus nitrite (as nitrogen) analysis 'nitrate_plus_nitrite_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_ammonia_plus_ammonium</attrlabl><attrdef>Remark code associated with the ammonia plus ammonium analysis in 'ammonia_plus_ammonium_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_Kjeldahl_nitrogen_unfiltered</attrlabl><attrdef>Remark code associated with the total Kjeldahl nitrogen-unfiltered analysis in 'total_Kjeldahl_nitrogen_unfiltered_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_orthophosphate</attrlabl><attrdef>Remark code associated with the orthophosphate (as phosphorus) analysis in 'orthophosphate_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_phosphorus_unfiltered</attrlabl><attrdef>Remark code associated with the total phosphorus-unfiltered analysis 'total_phosphorus_unfiltered_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_nitrogen</attrlabl><attrdef>Remark code associated with the total nitrogen analysis 'total_nitrogen_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_organic_nitrogen</attrlabl><attrdef>Remark code associated with the organic nitrogen analysis 'organic_nitrogen_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_dissolved_organic_carbon</attrlabl><attrdef>Remark code associated with the dissolved organic carbon analysis 'dissolved_organic_carbon_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark codes for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_organic_carbon</attrlabl><attrdef>Remark code associated with the total organic carbon analysis 'total_organic_carbon_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_Kjeldahl_nitrogen_filtered</attrlabl><attrdef>Remark code associated with the total Kjeldahl nitrogen-filtered analysis 'total_Kjeldahl_nitrogen_filtered_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_phosphorus_filtered</attrlabl><attrdef>Remark code associated with the total phosphorus-filtered analysis 'total_phosphorus_filtered_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_dissolved_solids</attrlabl><attrdef>Remark code associated with the total dissolved solids analysis in 'total_dissolved_solids_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_solids</attrlabl><attrdef>Remark code associated with the total solids analysis in 'total_solids_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_suspended_solids</attrlabl><attrdef>Remark code associated with the total suspended solids analysis in 'total_suspended_solids_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_volatile_suspended_solids</attrlabl><attrdef>Remark code associated with the total volatile suspended solids analysis 'total_suspended_solids_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+        <attrlabl>suspended_sediment_yield_pounds_per_acre</attrlabl>
+        <attrdef>Suspended sediment yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>chloride_yield_pounds_per_acre</attrlabl>
+        <attrdef>Chloride yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>nitrate_plus_nitrite_yield_pounds_per_acre</attrlabl>
+        <attrdef>Nitrate plus nitrite (as nitrogen) yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ammonia_plus_ammonium_yield_pounds_per_acre</attrlabl>
+        <attrdef>Ammonia plus ammonium yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_Kjeldahl_nitrogen_unfiltered_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total Kjeldahl nitrogen-unfiltered yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>orthophosphate_yield_pounds_per_acre</attrlabl>
+        <attrdef>Orthophosphate (as phosphorus) yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_phosphorus_unfiltered_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total phosphorus-unfiltered yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_nitrogen_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total nitrogen yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>organic_nitrogen_yield_pounds_per_acre</attrlabl>
+        <attrdef>Organic nitrogen yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>dissolved_organic_carbon_yield_pounds_per_acre</attrlabl>
+        <attrdef>Dissolved organic carbon yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_organic_carbon_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total organic carbon yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_Kjeldahl_nitrogen_filtered_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total Kjeldahl nitrogen-filtered yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_phosphorus_filtered_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total phosphorus-filtered yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_dissolved_solids_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total dissolved solids yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_solids_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total solids yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_suspended_solids_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total suspended solids yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_volatile_suspended_solids_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total volatile suspended solids yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+    </detailed>
+    <detailed>
+      <enttyp>
+        <enttypl>All_EOF_StormEventLoadsRainCalculated.csv</enttypl>
+        <enttypd>Comma Separated Value (CSV) file containing combined flow event data.</enttypd>
+        <enttypds>Producer Defined</enttypds>
+      </enttyp>
+      <attr>
+        <attrlabl>USGS_Station_Number</attrlabl>
+        <attrdef>Unique USGS edge-of-field monitoring site number where hydrological data is collected</attrdef>
+        <attrdefs>USGS Water Data for the Nation</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>USGS Water Data for the Nation</codesetn>
+            <codesets>https://dx.doi.org/10.5066/F7P55KJN</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Field_Name</attrlabl>
+        <attrdef>Unique short name for 'USGS_Station_Number'</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Unique values, may include numbers, letters, and/or characters.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+  <attrlabl>project</attrlabl><attrdef>Cooperative Program</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>DiscoveryFarms</edomv>
+      <edomvd>University of Wisconsin Discovery Farms</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>GLRI</edomv>
+      <edomvd>Great Lakes Restoration Initiative – Priority Watersheds</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>MRBI</edomv>
+      <edomvd>Mississippi River Basin Initiative</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>NRCS</edomv>
+      <edomvd>Natural Resources Conservation Service</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>PioneerFarm</edomv>
+      <edomvd>University of Wisconsin-Platteville Pioneer Farm</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>SandCounty</edomv>
+      <edomvd>Sand County Foundation</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>discrete</attrlabl><attrdef>Indicator that water-quality sample was a discrete sample</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>0</edomv>
+      <edomvd>Water-quality sample was not discrete and sub-samples were combined to represent the entire flow event</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>1</edomv>
+      <edomvd>Water-quality sample was discrete and represents one point in time and not the entire flow event</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>estimated</attrlabl><attrdef>Indicator that event water-quality concentration was estimated as described in process step 3.</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>0</edomv>
+      <edomvd>Data are reported from the lab and not estimated</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>1</edomv>
+      <edomvd>Data are estimated</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>frozen</attrlabl><attrdef>Indicator that the event occurred when ground was frozen at any depth</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>0</edomv>
+      <edomvd>The ground was not frozen during the event</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>1</edomv>
+      <edomvd>The ground was frozen during the event</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>storm</attrlabl><attrdef>Indicator of the type of flow associated with this event: baseflow or storm flow.</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>0</edomv>
+      <edomvd>The flow in this event is associated with baseflow, groundwater flow, melting snow, or melting frozen ground and not a monitored precipitation event</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>1</edomv>
+      <edomvd>The runoff causing the flow event is associated with a monitored precipitation event (rain, snow, or sleet)</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+        <attrlabl>unique_storm_number</attrlabl>
+        <attrdef>Unique flow event identifier</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Unique values, may include numbers, letters, and/or characters</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>n_sub_flow_events</attrlabl>
+        <attrdef>Number of sub-flow or precipitation events combined to compute flow and rainfall metrics. Mutltiple events were combined when events occurred within two hours of each other.</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><rdom>
+            <rdommin>1</rdommin>
+            <rdommax>15</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>storm_start</attrlabl>
+        <attrdef>Date and time when the flow event started</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Date and time in two-digit month/two-digit day/four-digit year two-digit hour:two-digit minute in Universal Time Coordinated (UTC) time zone</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>storm_end</attrlabl>
+        <attrdef>Date and time when the flow event ended</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Date and time in two-digit month/two-digit day/four-digit year two-digit hour:two-digit minute in Universal Time Coordinated (UTC) time zone</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>runoff_volume</attrlabl>
+        <attrdef>Total runoff volume per flow event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Volume in cubic feet</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>peak_discharge</attrlabl>
+        <attrdef>Maximum discharge per flow event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>peak discharge not measured</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Discharge in cubic feet per second</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>estimated_flow_fraction</attrlabl>
+        <attrdef>Fraction of the total runoff volume that was estimated</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Unitless value between 0 and 1. Larger values indicate more of the total runoff volume for the event was estimated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>suspended_sediment_load_pounds</attrlabl>
+        <attrdef>Suspended sediment load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>chloride_load_pounds</attrlabl>
+        <attrdef>Chloride load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>nitrate_plus_nitrite_load_pounds</attrlabl>
+        <attrdef>Nitrate plus nitrite (as nitrogen) load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ammonia_plus_ammonium_load_pounds</attrlabl>
+        <attrdef>Ammonia plus ammonium load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_Kjeldahl_nitrogen_unfiltered_load_pounds</attrlabl>
+        <attrdef>Total Kjeldahl nitrogen-unfiltered load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>orthophosphate_load_pounds</attrlabl>
+        <attrdef>Orthophosphate (as phosphorus) load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_phosphorus_unfiltered_load_pounds</attrlabl>
+        <attrdef>Total phosphorus-unfiltered load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_nitrogen_load_pounds</attrlabl>
+        <attrdef>Total nitrogen load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>organic_nitrogen_load_pounds</attrlabl>
+        <attrdef>Organic nitrogen load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>dissolved_organic_carbon_load_pounds</attrlabl>
+        <attrdef>Dissolved organic carbon load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_organic_carbon_load_pounds</attrlabl>
+        <attrdef>Total organic carbon load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_Kjeldahl_nitrogen_filtered_load_pounds</attrlabl>
+        <attrdef>Total Kjeldahl nitrogen-filtered load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_phosphorus_filtered_load_pounds</attrlabl>
+        <attrdef>Total phosphorus-filtered load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_dissolved_solids_load_pounds</attrlabl>
+        <attrdef>Total dissolved solids load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_solids_load_pounds</attrlabl>
+        <attrdef>Total solids load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_suspended_solids_load_pounds</attrlabl>
+        <attrdef>Total suspended solids load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_volatile_suspended_solids_load_pounds</attrlabl>
+        <attrdef>Total volatile suspended solids load per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated load reported in pounds</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>suspended_sediment_conc_mgL</attrlabl>
+        <attrdef>Suspended sediment concentration reported by the analyzing laboratory; USGS NWIS parameter code 80154</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>chloride_conc_mgL</attrlabl>
+        <attrdef>Chloride concentration reported by the analyzing laboratory; USGS NWIS parameter code 00940</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>nitrate_plus_nitrite_conc_mgL</attrlabl>
+        <attrdef>Nitrate plus nitrite (as nitrogen) concentration reported by the analyzing laboratory; USGS NWIS parameter code 00631</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ammonia_plus_ammonium_conc_mgL</attrlabl>
+        <attrdef>Ammonia plus ammonium concentration reported by the analyzing laboratory; USGS NWIS parameter code 00608</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_Kjeldahl_nitrogen_unfiltered_conc_mgL</attrlabl>
+        <attrdef>Total Kjeldahl-unfiltered concentration reported by the analyzing laboratory; USGS NWIS parameter code 00625</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>orthophosphate_conc_mgL</attrlabl>
+        <attrdef>Orthophosphate (as phosphorus) concentration reported by the analyzing laboratory; USGS NWIS parameter code 00671</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_phosphorus_unfiltered_conc_mgL</attrlabl>
+        <attrdef>Total phosphorus concentration reported by the analyzing laboratory; USGS NWIS parameter code 00665</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_nitrogen_conc_mgL</attrlabl>
+        <attrdef>Total nitrogen concentration reported by the analyzing laboratory; USGS NWIS parameter code 00600</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>organic_nitrogen_conc_mgL</attrlabl>
+        <attrdef>Organic nitrogen concentration reported by the analyzing laboratory; USGS NWIS parameter code 00605</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>dissolved_organic_carbon_conc_mgL</attrlabl>
+        <attrdef>Dissolved organic carbon concentration reported by the analyzing laboratory; USGS NWIS parameter code 00681</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_organic_carbon_conc_mgL</attrlabl>
+        <attrdef>Total organic carbon concentration reported by the analyzing laboratory; USGS NWIS parameter code 00680</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_Kjeldahl_nitrogen_filtered_conc_mgL</attrlabl>
+        <attrdef>Total Kjeldahl nitrogen-filtered concentration reported by the analyzing laboratory; USGS NWIS parameter code 00623</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_phosphorus_filtered_conc_mgL</attrlabl>
+        <attrdef>Total phosphorus-filtered concentration reported by the analyzing laboratory; USGS NWIS parameter code 00666</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_dissolved_solids_conc_mgL</attrlabl>
+        <attrdef>Total dissolved solids concentration reported by the analyzing laboratory; USGS NWIS parameter code 70300</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_solids_conc_mgL</attrlabl>
+        <attrdef>Total solids concentration reported by the analyzing laboratory; USGS NWIS parameter code 00500</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_suspended_solids_conc_mgL</attrlabl>
+        <attrdef>Total suspended solids concentration reported by the analyzing laboratory; USGS NWIS parameter code 00530</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_volatile_suspended_solids_conc_mgL</attrlabl>
+        <attrdef>Total volatile suspended solids concentration reported by the analyzing laboratory; USGS NWIS parameter code 00535</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>If the ‘discrete’ column is “0” then the laboratory reported data are flow-weighted average concentrations, while a “1” indicates the reported data are discrete concentrations. Concentration data are reported in milligrams per liter in accuracy reported by the analyzing laboratory</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+  <attrlabl>remark_suspended_sediment</attrlabl><attrdef>Remark code associated with the suspended sediment analysis in 'suspended_sediment_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_chloride</attrlabl><attrdef>Remark code associated with the chloride analysis 'chloride_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_nitrate_plus_nitrite</attrlabl><attrdef>Remark code associated with the nitrate plus nitrite (as nitrogen) analysis 'nitrate_plus_nitrite_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_ammonia_plus_ammonium</attrlabl><attrdef>Remark code associated with the ammonia plus ammonium analysis in 'ammonia_plus_ammonium_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_Kjeldahl_nitrogen_unfiltered</attrlabl><attrdef>Remark code associated with the total Kjeldahl nitrogen-unfiltered analysis in 'total_Kjeldahl_nitrogen_unfiltered_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_orthophosphate</attrlabl><attrdef>Remark code associated with the orthophosphate (as phosphorus) analysis in 'orthophosphate_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_phosphorus_unfiltered</attrlabl><attrdef>Remark code associated with the total phosphorus-unfiltered analysis 'total_phosphorus_unfiltered_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_nitrogen</attrlabl><attrdef>Remark code associated with the total nitrogen analysis 'total_nitrogen_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_organic_nitrogen</attrlabl><attrdef>Remark code associated with the organic nitrogen analysis 'organic_nitrogen_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_dissolved_organic_carbon</attrlabl><attrdef>Remark code associated with the dissolved organic carbon analysis 'dissolved_organic_carbon_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark codes for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_organic_carbon</attrlabl><attrdef>Remark code associated with the total organic carbon analysis 'total_organic_carbon_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_Kjeldahl_nitrogen_filtered</attrlabl><attrdef>Remark code associated with the total Kjeldahl nitrogen-filtered analysis 'total_Kjeldahl_nitrogen_filtered_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_phosphorus_filtered</attrlabl><attrdef>Remark code associated with the total phosphorus-filtered analysis 'total_phosphorus_filtered_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_dissolved_solids</attrlabl><attrdef>Remark code associated with the total dissolved solids analysis in 'total_dissolved_solids_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_solids</attrlabl><attrdef>Remark code associated with the total solids analysis in 'total_solids_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_suspended_solids</attrlabl><attrdef>Remark code associated with the total suspended solids analysis in 'total_suspended_solids_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>remark_total_volatile_suspended_solids</attrlabl><attrdef>Remark code associated with the total volatile suspended solids analysis 'total_suspended_solids_conc_mgL'</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>no remark code for this sample</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>&lt;</edomv>
+      <edomvd>Actual value is known to be less than the value shown. We used 1/2 the less than value to compute loads and yields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+        <attrlabl>suspended_sediment_yield_pounds_per_acre</attrlabl>
+        <attrdef>Suspended sediment yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>chloride_yield_pounds_per_acre</attrlabl>
+        <attrdef>Chloride yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>nitrate_plus_nitrite_yield_pounds_per_acre</attrlabl>
+        <attrdef>Nitrate plus nitrite (as nitrogen) yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ammonia_plus_ammonium_yield_pounds_per_acre</attrlabl>
+        <attrdef>Ammonia plus ammonium yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_Kjeldahl_nitrogen_unfiltered_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total Kjeldahl nitrogen-unfiltered yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>orthophosphate_yield_pounds_per_acre</attrlabl>
+        <attrdef>Orthophosphate (as phosphorus) yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_phosphorus_unfiltered_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total phosphorus-unfiltered yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_nitrogen_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total nitrogen yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>organic_nitrogen_yield_pounds_per_acre</attrlabl>
+        <attrdef>Organic nitrogen yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>dissolved_organic_carbon_yield_pounds_per_acre</attrlabl>
+        <attrdef>Dissolved organic carbon yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_organic_carbon_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total organic carbon yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_Kjeldahl_nitrogen_filtered_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total Kjeldahl nitrogen-filtered yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_phosphorus_filtered_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total phosphorus-filtered yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_dissolved_solids_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total dissolved solids yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_solids_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total solids yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_suspended_solids_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total suspended solids yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>total_volatile_suspended_solids_yield_pounds_per_acre</attrlabl>
+        <attrdef>Total volatile suspended solids yield per flow event (calculated)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>constituent not analyzed</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Calculated yield reported in pounds per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>rain</attrlabl>
+        <attrdef>Total rain amount monitored at the USGS site monitoring precipitation identified in ‘USGS_Station_Number_for_Precipitation’ and associated to distinct rain event indicated in the 'StartDate' and 'EndDate' columns.</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>rain not measured</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Total amount of precipitation measured, in inches</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>duration</attrlabl>
+        <attrdef>Duration of rain event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>no data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: hours. NA occurs when rain depth is 0.01 because it indicates there was only one tip of the tipping bucket, therefore duration cannot be computed.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Ievent</attrlabl>
+        <attrdef>Rainfall intensity over the entire rain event calculated by dividing 'rain' by 'duration'</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: inches per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>I5</attrlabl>
+        <attrdef>Maximum 5-minute rainfall intensity of rain event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: inches per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>I10</attrlabl>
+        <attrdef>Maximum 10-minute rainfall intensity of rain event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: inches per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>I15</attrlabl>
+        <attrdef>Maximum 15-minute rainfall intensity of rain event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: inches per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>I30</attrlabl>
+        <attrdef>Maximum 30-minute rainfall intensity of rain event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: inches per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>I60</attrlabl>
+        <attrdef>Maximum 60-minute rainfall intensity of rain event</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: inches per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>energy_m1</attrlabl>
+        <attrdef>Calculated rainfall energy to drive erosion using McGregor (1995)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: foot-ton X inch per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>erosivity_m1</attrlabl>
+        <attrdef>Calculated erosive power of the rainfall using McGregor (1995)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: 100 X foot-ton X inch per acre per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>energy_m2</attrlabl>
+        <attrdef>Calculated rainfall energy to drive erosion using formulas based on Wischmeier and Smith (1979 and 1981)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: foot-ton X inch per acre</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>erosivity_m2</attrlabl>
+        <attrdef>Calculated erosive power of the rainfall using formulas based on Wischmeier and Smith (1979 and 1981)</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Units: 100 X foot-ton X inch per acre per hour</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ARFdays1</attrlabl>
+        <attrdef>The Antecedent RainFall (ARF) depth calculated by summing the total precipitation monitored for a period of one day before the beginning of the indicated rain event in ‘StartDate’</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Cumulative depth of rain in inches</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ARFdays2</attrlabl>
+        <attrdef>The Antecedent RainFall (ARF) depth calculated by summing the total precipitation monitored for a period of two days before the beginning of the indicated rain event in ‘StartDate’</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Cumulative depth of rain in inches</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ARFdays7</attrlabl>
+        <attrdef>The Antecedent RainFall (ARF) depth calculated by summing the total precipitation monitored for a period of seven days before the beginning of the indicated rain event in ‘StartDate’</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Cumulative depth of rain in inches</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>ARFdays14</attrlabl>
+        <attrdef>The Antecedent RainFall (ARF) depth calculated by summing the total precipitation monitored for a period of fourteen days before the beginning of the indicated rain event in ‘StartDate’</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Cumulative depth of rain in inches</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+  <attrlabl>remark_rain</attrlabl><attrdef>Remark code associated with the rainfall metric calculations; may contain multiple flags separated by a space</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv><edom>
+  <edomv>NA</edomv>
+  <edomvd>No data available</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom></attrdomv><attrdomv>
+    <edom>
+      <edomv>frozen</edomv>
+      <edomvd>event classified as frozen</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>runoff_index</edomv>
+      <edomvd>The runoff volume in 'runoff_volume' divided by the rain volume is greater than 80 percent. Runoff likely did not capture the full rain volume. Where rain volume is equal to rain total in 'rain' multiplied by the catchment area provided in 'Area' of the 'EOF_Site_Table.csv' data table.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>zero</edomv>
+      <edomvd>rain total in 'rain' was zero</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>tile</edomv>
+      <edomvd>This is a tile site, which might explain why rain total in 'rain' was 0 even though there was runoff, or why duration was multiple days.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>missing</edomv>
+      <edomvd>no precipitation data recorded</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+    </detailed>
+    <detailed>
+      <enttyp>
+        <enttypl>EOF_Site_Table.csv</enttypl>
+        <enttypd>Comma Separated Value (CSV) file containing site information.</enttypd>
+        <enttypds>Producer Defined</enttypds>
+      </enttyp>
+      <attr>
+        <attrlabl>USGS_Station_Number</attrlabl>
+        <attrdef>Unique USGS edge-of-field monitoring site number where hydrological data is collected</attrdef>
+        <attrdefs>USGS Water Data for the Nation</attrdefs>
+        <attrdomv>
+          <codesetd>
+            <codesetn>USGS Water Data for the Nation</codesetn>
+            <codesets>https://dx.doi.org/10.5066/F7P55KJN</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>USGS_Station_Name</attrlabl>
+        <attrdef>USGS site name for the site in 'USGS_Station_Number'</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>descriptive station name</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>State</attrlabl>
+        <attrdef>Abbreviation for state where site indicated in 'USGS_Station_Number' is located.</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><codesetd>
+            <codesetn>US Postal 2-Letter State</codesetn>
+            <codesets>https://pe.usps.com/text/pub28/28apb.htm</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Field_Name</attrlabl>
+        <attrdef>Unique short name for 'USGS_Station_Number'</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Unique values, may include numbers, letters, and/or characters.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+  <attrlabl>project</attrlabl><attrdef>Cooperative program</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>DiscoveryFarms</edomv>
+      <edomvd>University of Wisconsin Discovery Farms</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>GLRI</edomv>
+      <edomvd>Great Lakes Restoration Initiative – Priority Watersheds</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>MRBI</edomv>
+      <edomvd>Mississippi River Basin Initiative</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>NRCS</edomv>
+      <edomvd>Natural Resources Conservation Service</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>PioneerFarm</edomv>
+      <edomvd>University of Wisconsin-Platteville Pioneer Farm</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>SandCounty</edomv>
+      <edomvd>Sand County Foundation</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>Site_Type</attrlabl><attrdef>Type of edge-of-field monitoring site</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>Surface</edomv>
+      <edomvd>Surface edge-of-field site located in areas where runoff exits agricultural fields.</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>Tile</edomv>
+      <edomvd>Subsurface tile edge-of-field site located at drainage tile outlets, in a ditch or stream, or in-line with the subsurface tile system</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+        <attrlabl>Water_Years_Operated</attrlabl>
+        <attrdef>Range of water years that flow and water-quality data was collected at site in 'USGS_Station_Number'</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Range of years in four-digit year format with years separated by a dash. The beginning of the water year starts on October 1st and ends on September 30th. When a year range is incomplete, ending with a dash (-), then data collection is ongoing.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Approximate_Start_Date</attrlabl>
+        <attrdef>Approximate start date of flow and water-quality data collection at site</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Date in two-digit month/two-digit day/four-digit year</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Approximate_End_Date</attrlabl>
+        <attrdef>Approximate end date of flow, or water-quality data collection at site</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>not applicable; no end date at the time of this publication</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Date in two-digit month/two-digit day/four-digit year</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Partial_Year</attrlabl>
+        <attrdef>Specific water years when monitoring equipment was not installed for the full water year and therefore are not useable for computing annual flow, load, or rainfall metrics.</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>Not applicable</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Four digit years in which equipment was installed or removed mid-year. The beginning of the water year starts on October 1st and ends on September 30th.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Missing_or_Unuseable_Year</attrlabl>
+        <attrdef>Specific water years with incomplete data due to issues with monitoring equipment and therefore are not useable for computing annual flow, load, or rainfall metrics.</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>four digit years in which data collection had significant gaps or was incomplete. The beginning of the water year starts on October 1st and ends on September 30th.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Useable_Site_Years</attrlabl>
+        <attrdef>Number of water years with complete data collection</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Total number of complete water years in the period of record at site in 'USGS_Station_Number'. The beginning of the water year starts on October 1st and ends on September 30th.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Area</attrlabl>
+        <attrdef>Drainage Area (or catchment) of the agricultural field where the edge-of-field site in ‘USGS_Station_Number’ is located</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Units: acres</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>USGS_Station_Number_for_Precipitation</attrlabl>
+        <attrdef>Unique USGS site number where precipitation data was collected and associated with the edge-of-field site in 'USGS_Station_Number'</attrdef>
+        <attrdefs>USGS Water Data for the Nation</attrdefs>
+        <attrdomv><codesetd>
+            <codesetn>USGS Water Data for the Nation</codesetn>
+            <codesets>https://dx.doi.org/10.5066/F7P55KJN</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>USGS_Station_Name_for_Precipitation</attrlabl>
+        <attrdef>USGS site name for the site in 'USGS_Station_Number_for_Precipitation'</attrdef>
+        <attrdefs>USGS Water Data for the Nation</attrdefs>
+        <attrdomv><codesetd>
+            <codesetn>USGS Water Data for the Nation</codesetn>
+            <codesets>https://dx.doi.org/10.5066/F7P55KJN</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Farm_Enterprise</attrlabl>
+        <attrdef>Primary production type of the agricultural field where the edge-of-field monitoring site in 'USGS_Station_Number' is located</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><udom>Character string describing primary production at the edge-of-field monitoring site in 'USGS_Station_Number'</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Crop_Rotation</attrlabl>
+        <attrdef>Type of crop rotation in the agricultural field where the edge-of-field monitoring site in 'USGS_Station_Number' is located</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <edom>
+  <edomv>NA</edomv>
+  <edomvd>Not applicable</edomvd>
+  <edomvds>Producer defined</edomvds>
+</edom>
+        </attrdomv>
+        <attrdomv><udom>Character string describing crop rotation at site in 'USGS_Station_Number'</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+  <attrlabl>Land_Use</attrlabl><attrdef>Dominant land use in the catchment where the edge-of-field monitoring site in 'USGS_Station_Number' is located</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>Cultivated Crops</edomv>
+      <edomvd>Areas used for the production of annual crops. Crop vegetation accounts for greater than 20 percent of total vegetation.</edomvd>
+      <edomvds>National Landcover Database</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>Grassland/Herbaceous</edomv>
+      <edomvd>Areas dominated by gramanoid or herbaceous vegetation, generally greater than 80 percent of total vegetation. These areas are not subject to intensive management such as tilling, but can be utilized for grazing.</edomvd>
+      <edomvds>National Landcover Database</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>Pasture/Hay</edomv>
+      <edomvd>Areas of grasses, legumes, or grass-legume mixtures planted for livestock grazing or the production of seed or hay crops, typically on a perennial cycle. Pasture/hay vegetation accounts for greater than 20 percent of total vegetation.</edomvd>
+      <edomvds>National Landcover Database</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>Developed, Low Intensity</edomv>
+      <edomvd>Areas with a mixture of constructed materials and vegetation. Impervious surfaces account for 20 to 49 percent of total cover. These areas most commonly include single-family housing units.</edomvd>
+      <edomvds>National Landcover Database</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>Tillage</attrlabl><attrdef>Indicator if land in the catchment where the edge-of-field monitoring site in 'USGS_Station_Number' is located is tilled</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>Yes</edomv>
+      <edomvd>Land management includes tilling</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>No</edomv>
+      <edomvd>Land management does not include tilling</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>Unknown</edomv>
+      <edomvd>Tillage status not known</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+  <attrlabl>Manure</attrlabl><attrdef>Indicator if manure is applied to land in the catchment where the edge-of-field monitoring site in 'USGS_Station_Number' is located</attrdef><attrdefs>Producer Defined</attrdefs><attrdomv>
+    <edom>
+      <edomv>Yes</edomv>
+      <edomvd>Manure is applied</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+  <attrdomv>
+    <edom>
+      <edomv>No</edomv>
+      <edomvd>Manure is not applied</edomvd>
+      <edomvds>Producer defined</edomvds>
+    </edom>
+  </attrdomv>
+</attr>
+      <attr>
+        <attrlabl>Primary_Soil_Type</attrlabl>
+        <attrdef>Dominant soil type in the catchment where the edge-of-field monitoring site in 'USGS_Station_Number' is located</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv><codesetd>
+            <codesetn>NRCS Soil Survey</codesetn>
+            <codesets>https://websoilsurvey.sc.egov.usda.gov/App/HomePage.htm</codesets>
+          </codesetd>
+        </attrdomv>
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>U.S. Geological Survey</cntorg>
+          <cntper>GS ScienceBase</cntper>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>Denver Federal Center, Building 810, Mail Stop 302</address>
+          <city>Denver</city>
+          <state>CO</state>
+          <postal>80225</postal>
+          <country>United States</country>
+        </cntaddr>
+        <cntvoice>1-888-275-8747</cntvoice>
+        <cntemail>sciencebase@usgs.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <distliab>Unless otherwise stated, all data, metadata and related materials are considered to satisfy the quality standards relative to the purpose for which the data were collected. Although these data and associated metadata have been reviewed for accuracy and completeness and approved for release by the U.S. Geological Survey (USGS), no warranty expressed or implied is made regarding the display or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty.</distliab>
+    <stdorder>
+      <digform><digtinfo>
+          <formname>Digital Data</formname>
+        </digtinfo>
+        <digtopt><onlinopt><computer><networka><networkr>https://doi.org/10.5066/P9LO8O70</networkr></networka></computer></onlinopt></digtopt></digform>
+      <fees>None</fees>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metd>20241107</metd>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>U.S. Geological Survey, Upper Midwest Water Science Center</cntorg>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>1 Gifford Pinchot Drive</address>
+          <city>Madison</city>
+          <state>WI</state>
+          <postal>53726</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>608-828-9901</cntvoice>
+        <cntfax>608-821-3817</cntfax>
+        <cntemail>rbcarvin@usgs.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metstdn>FGDC Biological Data Profile of the Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001.1-1999</metstdv>
+  </metainfo>
+</metadata>
