@@ -1,178 +1,188 @@
-# ============================================================
-# Sediment_out.py
-# Author: Mingyu Wang
-# Purpose: Calculate annual sediment and nutrient loads (kg/ha/year)
-#          for Great Lakes USGS Edge-of-Field sites
-# ============================================================
-
 import pandas as pd
 import numpy as np
 import os
+import matplotlib.pyplot as plt
 
-# ------------------------------------------------------------
-# STEP 0. Set working directory (current folder)
-# ------------------------------------------------------------
-# If this file is saved in the same folder as your CSVs, this will work automatically
 folder = os.path.dirname(__file__)
 os.chdir(folder)
 
 # ------------------------------------------------------------
-# STEP 1. Load datasets
+# 1. Load files
 # ------------------------------------------------------------
-sites = pd.read_csv("RAW/EOF_Site_Table.csv", encoding="latin1")
-storm_rain = pd.read_csv("RAW/All_EOF_StormEventLoadsRainCalculated.csv", encoding="latin1")
+events = pd.read_csv("RAW/All_EOF_StormEventLoadsRainCalculated.csv")
+sites  = pd.read_csv("RAW/EOF_Site_Table.csv", encoding="latin1")
+
+# Convert area to hectares (correct value)
+sites["Area_ha"] = sites["Area"] * 0.4046856
 
 # ------------------------------------------------------------
-# STEP 2. Filter Great Lakes States
+# 2. Identify storm start date column
 # ------------------------------------------------------------
-great_lakes_states = ["OH", "MI", "IN", "WI", "NY"]
-sites_gl = sites[sites["State"].isin(great_lakes_states)]
+storm_cols = [c for c in events.columns if ("storm" in c.lower() and "start" in c.lower())]
 
-print(f" Number of selected sites in Great Lakes region: {len(sites_gl)}")
+if len(storm_cols) == 0:
+    date_candidates = [c for c in events.columns if "date" in c.lower()]
+    if len(date_candidates) == 0:
+        raise ValueError("No storm_start or date column found.")
+    storm_col = date_candidates[0]
+else:
+    storm_col = storm_cols[0]
 
-sites_gl = sites_gl[["USGS_Station_Number", "State", "Area", "Site_Type"]]
+events[storm_col] = pd.to_datetime(events[storm_col], errors="coerce")
+events["Year"]     = events[storm_col].dt.year
 
 # ------------------------------------------------------------
-# STEP 3. Filter rainfall + load events for these sites
+# 3. Concentration-based nutrient mass computation
 # ------------------------------------------------------------
-storm_gl = storm_rain[storm_rain["USGS_Station_Number"].isin(sites_gl["USGS_Station_Number"])]
-print(f" Number of storm events retained: {len(storm_gl)}")
+# Required concentration fields
+P_conc = "total_phosphorus_unfiltered_conc_mgL"
+N_conc = "total_nitrogen_conc_mgL"
+sed_conc = "suspended_sediment_conc_mgL"
+
+# Sediment load field (in pounds → convert to kg)
+events["Sediment_load_kg"] = events["suspended_sediment_load_pounds"] * 0.45359237
+
+# runoff_volume is already in Liters
+Q = events["runoff_volume"]
+
+# Nutrient mass (mg) = concentration (mg/L) × runoff volume (L)
+events["P_mass_mg"] = events[P_conc] * Q
+events["N_mass_mg"] = events[N_conc] * Q
+
+# Convert mg → kg
+events["P_mass_kg"] = events["P_mass_mg"] / 1e6
+events["N_mass_kg"] = events["N_mass_mg"] / 1e6
 
 # ------------------------------------------------------------
-# STEP 4. Extract year and calculate annual totals
+# 4. Merge site area
 # ------------------------------------------------------------
-storm_gl["Year"] = pd.to_datetime(storm_gl["storm_start"], errors="coerce").dt.year
-
-load_cols = [
-    "USGS_Station_Number",
-    "Year",
-    "suspended_sediment_yield_pounds_per_acre",
-    "total_nitrogen_yield_pounds_per_acre",
-    "total_phosphorus_unfiltered_yield_pounds_per_acre"
-]
-storm_gl = storm_gl[load_cols].dropna(subset=["Year"])
-
-annual_loads = (
-    storm_gl.groupby(["USGS_Station_Number", "Year"])
-    .sum(numeric_only=True)
-    .reset_index()
+df = events.merge(
+    sites[["USGS_Station_Number","Area_ha"]],
+    on="USGS_Station_Number",
+    how="left"
 )
 
 # ------------------------------------------------------------
-# STEP 5. Convert units and merge with site info
+# 5. Aggregate per station-year (sum of kg, NOT kg/ha)
 # ------------------------------------------------------------
-# 1 pound/acre = 1.12085 kg/ha
-factor = 1.12085
-annual_loads["Sediment_kg_ha_yr"] = annual_loads["suspended_sediment_yield_pounds_per_acre"] * factor
-annual_loads["N_kg_ha_yr"] = annual_loads["total_nitrogen_yield_pounds_per_acre"] * factor
-annual_loads["P_kg_ha_yr"] = annual_loads["total_phosphorus_unfiltered_yield_pounds_per_acre"] * factor
-
-annual_loads = annual_loads.merge(sites_gl, on="USGS_Station_Number", how="left")
-
-# ------------------------------------------------------------
-# STEP 6. Calculate mean annual yield by state
-# ------------------------------------------------------------
-state_summary = (
-    annual_loads.groupby("State")[["Sediment_kg_ha_yr", "N_kg_ha_yr", "P_kg_ha_yr"]]
-    .mean()
-    .reset_index()
-)
+annual = df.groupby(["USGS_Station_Number","Year"], as_index=False).agg({
+    "Sediment_load_kg": "sum",
+    "P_mass_kg": "sum",
+    "N_mass_kg": "sum",
+    "Area_ha": "first"
+})
 
 # ------------------------------------------------------------
-# STEP 7. Export results
+# 5.1 Identify VALID station-year
+# If both P and N concentrations missing → invalid
 # ------------------------------------------------------------
-annual_loads.to_csv("Output/Annual_Sediment_Nutrient_Loads.csv", index=False)
-state_summary.to_csv("Output/State_Average_Annual_Yields.csv", index=False)
+annual["Valid"] = ~(
+    df.groupby(["USGS_Station_Number","Year"])[[P_conc, N_conc]].mean().isna().all(axis=1)
+).values
 
-print("\n Processing finished successfully!")
-print("  Created: Annual_Sediment_Nutrient_Loads.csv")
-print("  Created: State_Average_Annual_Yields.csv\n")
-
-print("Preview of per-state averages:")
-print(state_summary)
-
-
-
-# ============================================================
-# STEP 8. Plot temporal trends (Sediment, N, P) by state
-# ============================================================
-
-import matplotlib.pyplot as plt
+# Keep valid rows only (important!)
+annual_valid = annual[annual["Valid"]]
 
 # ------------------------------------------------------------
-# Load the annual results (created earlier)
+# 6. Annual regional totals using only valid stations in that year
 # ------------------------------------------------------------
-annual_loads = pd.read_csv("Output/Annual_Sediment_Nutrient_Loads.csv")
+# Use VALID years only (from data that passed QC)
+years = sorted(annual_valid["Year"].dropna().unique())
+rows   = []
 
-# Make sure Year column is integer
-annual_loads["Year"] = annual_loads["Year"].astype(int)
+for y in years:
+    sub = annual_valid[annual_valid["Year"] == y]
 
-# output folder
-out_folder = "Output"
+    if len(sub) == 0:
+        rows.append({
+            "Year": y,
+            "Effective_Area_ha": 0,
+            "Total_Sediment_kg": 0,
+            "Total_N_kg": 0,
+            "Total_P_kg": 0,
+            "Sediment_kg_ha_yr": None,
+            "N_kg_ha_yr": None,
+            "P_kg_ha_yr": None
+        })
+        continue
+
+    # total area = area of valid stations
+    effective_area = sub["Area_ha"].sum()
+
+    total_sed = sub["Sediment_load_kg"].sum()
+    total_N   = sub["N_mass_kg"].sum()
+    total_P   = sub["P_mass_kg"].sum()
+
+    sed_per_ha = total_sed / effective_area if effective_area > 0 else None
+    N_per_ha   = total_N   / effective_area if effective_area > 0 else None
+    P_per_ha   = total_P   / effective_area if effective_area > 0 else None
+
+    rows.append({
+        "Year": y,
+        "Effective_Area_ha": effective_area,
+        "Total_Sediment_kg": total_sed,
+        "Total_N_kg": total_N,
+        "Total_P_kg": total_P,
+        "Sediment_kg_ha_yr": sed_per_ha,
+        "N_kg_ha_yr": N_per_ha,
+        "P_kg_ha_yr": P_per_ha
+    })
+
+annual_region = pd.DataFrame(rows)
+
+annual_region.to_csv("Output/Annual_Region_Yields.csv", index=False)
+print("Created: Annual_Region_Yields.csv")
+print(annual_region.head())
 
 # ------------------------------------------------------------
-# Define a reusable plotting function
+# 7. Trend plots (Total and per-ha)
 # ------------------------------------------------------------
-def plot_trend(data, value_col, ylabel, title, filename):
-    """
-    Plot the temporal trend of a given nutrient (or sediment) per state.
-    
-    Parameters:
-        data: DataFrame containing 'State', 'Year', and the value column
-        value_col: str, column name to plot (e.g., 'Sediment_kg_ha_yr')
-        ylabel: str, label for y-axis
-        title: str, plot title
-        filename: str, output PNG file name
-    """
-    plt.figure(figsize=(10,6))
-    
-    # Group by State and Year to calculate mean across sites
-    summary = data.groupby(["State", "Year"])[value_col].mean().reset_index()
-    
-    # Pivot to get Year as x-axis and states as columns
-    pivot = summary.pivot(index="Year", columns="State", values=value_col)
-    
-    # Plot each state's line
-    pivot.plot(ax=plt.gca(), marker="o", linewidth=2)
-    
-    plt.title(title, fontsize=14, weight="bold")
-    plt.xlabel("Year", fontsize=12)
-    plt.ylabel(ylabel, fontsize=12)
-    plt.grid(True, linestyle="--", alpha=0.6)
-    plt.legend(title="State", fontsize=10)
-    plt.xticks(pivot.index, rotation=45)
-    plt.tight_layout()
-    
-    # Save the figure as PNG
-    plt.savefig(os.path.join(out_folder, filename), dpi=300)
-    plt.close()
-    print(f" Saved figure: {filename}")
+plt.figure(figsize=(10,6))
+plt.plot(annual_region["Year"], annual_region["Total_Sediment_kg"], marker="o")
+plt.title("Annual Total Sediment (kg/year)")
+plt.ylabel("kg")
+plt.grid()
+plt.savefig("Output/Sediment_Total_Trend.png", dpi=300)
+plt.close()
 
-# ------------------------------------------------------------
-# STEP 9. Generate three separate plots
-# ------------------------------------------------------------
-plot_trend(
-    annual_loads,
-    "Sediment_kg_ha_yr",
-    "Sediment yield (kg/ha/year)",
-    "Annual Sediment Yield by State",
-    "Sediment_trend.png"
-)
+plt.figure(figsize=(10,6))
+plt.plot(annual_region["Year"], annual_region["Sediment_kg_ha_yr"], marker="o", color="red")
+plt.title("Annual Sediment Yield (kg/ha/year)")
+plt.ylabel("kg/ha")
+plt.grid()
+plt.savefig("Output/Sediment_Yield_Trend.png", dpi=300)
+plt.close()
 
-plot_trend(
-    annual_loads,
-    "N_kg_ha_yr",
-    "Nitrogen yield (kg/ha/year)",
-    "Annual Nitrogen Yield by State",
-    "N_trend.png"
-)
+plt.figure(figsize=(10,6))
+plt.plot(annual_region["Year"], annual_region["Total_N_kg"], marker="o", color="orange")
+plt.title("Annual Total Nitrogen (kg/year)")
+plt.ylabel("kg")
+plt.grid()
+plt.savefig("Output/N_Total_Trend.png", dpi=300)
+plt.close()
 
-plot_trend(
-    annual_loads,
-    "P_kg_ha_yr",
-    "Phosphorus yield (kg/ha/year)",
-    "Annual Phosphorus Yield by State",
-    "P_trend.png"
-)
+plt.figure(figsize=(10,6))
+plt.plot(annual_region["Year"], annual_region["N_kg_ha_yr"], marker="o", color="green")
+plt.title("Annual Nitrogen Yield (kg/ha/year)")
+plt.ylabel("kg/ha")
+plt.grid()
+plt.savefig("Output/N_Yield_Trend.png", dpi=300)
+plt.close()
 
-print("\n Trend plots created successfully!")
+plt.figure(figsize=(10,6))
+plt.plot(annual_region["Year"], annual_region["Total_P_kg"], marker="o", color="blue")
+plt.title("Annual Total Phosphorus (kg/year)")
+plt.ylabel("kg")
+plt.grid()
+plt.savefig("Output/P_Total_Trend.png", dpi=300)
+plt.close()
+
+plt.figure(figsize=(10,6))
+plt.plot(annual_region["Year"], annual_region["P_kg_ha_yr"], marker="o", color="purple")
+plt.title("Annual Phosphorus Yield (kg/ha/year)")
+plt.ylabel("kg/ha")
+plt.grid()
+plt.savefig("Output/P_Yield_Trend.png", dpi=300)
+plt.close()
+
+print("Saved all annual trend plots.")

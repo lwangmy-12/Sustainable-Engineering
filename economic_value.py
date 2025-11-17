@@ -1,137 +1,174 @@
 import pandas as pd
+import numpy as np
 import os
+import matplotlib.pyplot as plt
 
 folder = os.path.dirname(__file__)
 os.chdir(folder)
 
-# ---- Inputs from previous steps ----
-df = pd.read_csv("Output/Sediment_Reuse_Potential_by_State.csv")
+# ============================================================
+# 1. Load conc-based annual mass + reuse area
+# ============================================================
+annual = pd.read_csv("Output/Annual_Region_Reuse_Potential.csv")
 
-# ---- Assumptions (Need to refine with USDA sources!!!???) ----
-price_N = 1.89    # USD per kg of N (assumed, google search)
-price_P = 5.37    # USD per kg of P (assumed, google search)
-fert_N_need = 150  # kg N / ha typical demand (assumed, google search)
-fert_P_need = 22   # kg P / ha typical demand (assumed, google search)
+# ============================================================
+# 2. Fertilizer & crop assumptions
+# ============================================================
+price_N = 1.89     # USD per kg N
+price_P = 5.37     # USD per kg P
+fert_N_need = 150  # kg N/ha demand
+fert_P_need = 22   # kg P/ha demand
 
-# Application doses from Braga et al. (kg/ha)
-doses = {
-    "5t":  5000, # After find N and P is rich in sidement, to get more econimic value (Assumed)
-    #Original:
-    "20t":  20000,
-    "50t":  50000,
-    "75t":  75000,
-    "100t": 100000
-}
+# Crop nutrient demand (g)
+N_demand_g = fert_N_need * 1000
+P_demand_g = fert_P_need * 1000
 
-# ---- 1) Area-weighted production: total sediment, N, P per state per year ----
-# Total sediment produced (kg/yr) = yield (kg/ha/yr) * Area_ha
-df["Sed_total_kg_yr"] = df["Sediment_kg_ha_yr"] * df["Area_ha"]
-df["N_total_kg_yr"]   = df["N_kg_ha_yr"]        * df["Area_ha"]
-df["P_total_kg_yr"]   = df["P_kg_ha_yr"]        * df["Area_ha"]
+# Cost of conventional fertilizer (USD per ha)
+cost_per_ha = fert_N_need * price_N + fert_P_need * price_P
 
-# Nutrient content of sediment (mass fraction, not %); handle zero-division safely
-df["N_frac"] = (df["N_kg_ha_yr"] / df["Sediment_kg_ha_yr"]).fillna(0).clip(lower=0)
-df["P_frac"] = (df["P_kg_ha_yr"] / df["Sediment_kg_ha_yr"]).fillna(0).clip(lower=0)
+# ============================================================
+# 3. Recovery & availability parameters
+#    Account for: processing recovery, N mineralization, P solubility
+# ============================================================
+recovery_efficiency = 0.8  # 80% recovery after processing
+availability_N = 0.5       # 50% N available in-season (organic needs mineralization)
+availability_P = 0.8       # 80% P available
 
-# ---- 2) Gross nutrient value if ALL sediment is reused (no demand cap) ----
-df["Gross_value_USD_yr"] = df["N_total_kg_yr"] * price_N + df["P_total_kg_yr"] * price_P
+# ============================================================
+# 4. CRITICAL: Applied per-ha N/P on reuse area (NOT monitoring basis!)
+#    Must use Total_N/P ÷ ReuseArea_20t_ha, NOT N_kg_ha_yr (monitoring basis)
+# ============================================================
+# Protect against division by zero
+annual["ReuseArea_20t_ha_safe"] = annual["ReuseArea_20t_ha"].replace(0, np.nan)
 
-# ---- 3) Dose-specific coverage & demand-limited benefits ----
-# For each dose, compute:
-#  - Area covered by dose (ha) = Sed_total_kg_yr / dose
-#  - Nutrient delivered per ha under dose (kg/ha) = dose * N_frac (or P_frac)
-#  - Fraction of per-ha demand met: rN = N_per_ha / fert_N_need; rP = P_per_ha / fert_P_need
-#  - Limiting fraction r* = min(rN, rP, 1.0)
-#  - "Full-replacement equivalent hectares" = Area_covered * r*
-#  - Demand-capped value = min(Gross_value, FullReplacementHa * (N_need*price_N + P_need*price_P))
+# Applied per hectare (kg/ha) - CORRECT BASIS
+annual["N_applied_kg_per_ha"] = annual["Total_N_kg"] / annual["ReuseArea_20t_ha_safe"]
+annual["P_applied_kg_per_ha"] = annual["Total_P_kg"] / annual["ReuseArea_20t_ha_safe"]
 
-for k, dose in doses.items():
-    # area we can actually apply given the dose
-    df[f"AreaCovered_{k}_ha"] = df["Sed_total_kg_yr"] / dose
+# Usable N/P after recovery and availability fractions
+annual["N_usable_kg_per_ha"] = (
+    annual["N_applied_kg_per_ha"] * recovery_efficiency * availability_N
+)
+annual["P_usable_kg_per_ha"] = (
+    annual["P_applied_kg_per_ha"] * recovery_efficiency * availability_P
+)
 
-    # per-ha nutrient delivery at this dose
-    df[f"N_perha_{k}_kg"] = dose * df["N_frac"]
-    df[f"P_perha_{k}_kg"] = dose * df["P_frac"]
+# Clamp negatives
+annual["N_usable_kg_per_ha"] = annual["N_usable_kg_per_ha"].clip(lower=0)
+annual["P_usable_kg_per_ha"] = annual["P_usable_kg_per_ha"].clip(lower=0)
 
-    # fraction of agronomic demand met (cap at 1.0)
-    df[f"rN_{k}"] = (df[f"N_perha_{k}_kg"] / fert_N_need).clip(upper=1.0)
-    df[f"rP_{k}"] = (df[f"P_perha_{k}_kg"] / fert_P_need).clip(upper=1.0)
+# ============================================================
+# 5. Replacement rates (separate N and P)
+# ============================================================
+annual["Percent_saved_N"] = (
+    annual["N_usable_kg_per_ha"] / fert_N_need
+).clip(0, 1)
 
-    # limiting nutrient determines full replacement equivalence
-    df[f"rStar_{k}"] = df[[f"rN_{k}", f"rP_{k}"]].min(axis=1)
+annual["Percent_saved_P"] = (
+    annual["P_usable_kg_per_ha"] / fert_P_need
+).clip(0, 1)
 
-    # hectares that are fully replaced (nutrient-equivalent), bounded by area covered
-    df[f"Ha_full_replaced_{k}"] = df[f"AreaCovered_{k}_ha"] * df[f"rStar_{k}"]
+# ============================================================
+# 6. Limiting nutrient (min(N, P))
+# ============================================================
+annual["Percent_saved_total"] = annual[["Percent_saved_N", "Percent_saved_P"]].min(axis=1)
+annual["Percent_saved_total_pct"] = annual["Percent_saved_total"] * 100
 
-    # per-ha fertilizer value (if fully replaced both N & P)
-    full_repl_value_per_ha = fert_N_need * price_N + fert_P_need * price_P
+# ============================================================
+# 7. Economic value (two methods for transparency)
+# ============================================================
+# Method A: Limiting nutrient
+annual["Cost_reduction_per_ha_limiting"] = annual["Percent_saved_total"] * cost_per_ha
+annual["Cost_reduction_total_USD_limiting"] = (
+    annual["Cost_reduction_per_ha_limiting"] * annual["ReuseArea_20t_ha"]
+)
 
-    # compute both options separately
-    gross_value = df["Gross_value_USD_yr"]
-    demand_limited_value = df[f"Ha_full_replaced_{k}"] * full_repl_value_per_ha
+# Method B: Separate N/P pricing (MORE TRANSPARENT)
+annual["N_saving_USD_per_ha"] = (
+    annual["N_usable_kg_per_ha"].clip(upper=fert_N_need) * price_N
+)
+annual["P_saving_USD_per_ha"] = (
+    annual["P_usable_kg_per_ha"].clip(upper=fert_P_need) * price_P
+)
+annual["Cost_reduction_per_ha"] = (
+    annual["N_saving_USD_per_ha"] + annual["P_saving_USD_per_ha"]
+)
+annual["Cost_reduction_total_USD"] = (
+    annual["Cost_reduction_per_ha"] * annual["ReuseArea_20t_ha"]
+)
 
-    # take the smaller (cannot exceed either)
-    df[f"DemandCapped_value_{k}_USD_yr"] = pd.concat(
-        [gross_value, demand_limited_value], axis=1
-    ).min(axis=1)
+# ============================================================
+# 7. Save output
+# ============================================================
+out_path = "Output/Annual_Region_Econ_Value.csv"
+annual.to_csv(out_path, index=False)
 
+print(f"Created: {out_path}")
+print("\n=== Economics Summary ===")
+print(annual[["Year", "ReuseArea_20t_ha", "N_applied_kg_per_ha", "P_applied_kg_per_ha",
+              "N_usable_kg_per_ha", "P_usable_kg_per_ha",
+              "Percent_saved_N", "Percent_saved_P",
+              "Cost_reduction_total_USD"]].round(2))
 
-# Save
-df.to_csv("Output/Sediment_Econ_DemandLimited_byDose_State.csv", index=False)
+# ============================================================
+# 8. Trend plots
+# ============================================================
+plot_dir = "Output/Econ_Trend_Plots"
+os.makedirs(plot_dir, exist_ok=True)
 
-# A compact view to inspect quickly
-cols_show = ["State","Area_ha","Sediment_kg_ha_yr","N_kg_ha_yr","P_kg_ha_yr",
-             "Sed_total_kg_yr","N_total_kg_yr","P_total_kg_yr","Gross_value_USD_yr"]
-for k in doses.keys():
-    cols_show += [f"AreaCovered_{k}_ha", f"Ha_full_replaced_{k}", f"DemandCapped_value_{k}_USD_yr"]
-print(df[cols_show].round(2))
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# Load the final data
-df = pd.read_csv("Output/Sediment_Econ_DemandLimited_byDose_State.csv")
-
-# For plotting aesthetics
-sns.set(style="whitegrid", palette="Set2")
-
-# Gather the columns for plotting
-dose_labels = ["5t", "20t", "50t", "75t", "100t"]
-
-# ---- Plot 1: Economic value per dose ----
+# --- 1. Total cost reduction (compare both methods) ---
 plt.figure(figsize=(10,6))
-value_cols = [f"DemandCapped_value_{d}_USD_yr" for d in dose_labels]
-value_melt = df.melt(id_vars="State", value_vars=value_cols,
-                     var_name="Dose", value_name="Value_USD_yr")
-
-# Clean up labels
-value_melt["Dose"] = value_melt["Dose"].str.extract("(\d+t)")
-
-sns.barplot(data=value_melt, x="State", y="Value_USD_yr", hue="Dose")
-plt.title("Annual Economic Value of Sediment Reuse by State and Application Dose")
-plt.ylabel("Annual Economic Value (USD/year)")
-plt.xlabel("State")
-plt.legend(title="Application Dose")
-plt.tight_layout()
-plt.savefig("Output/Economic_Value_by_State_Dose.png", dpi=300)
+plt.plot(annual["Year"], annual["Cost_reduction_total_USD_limiting"], marker="o", label="Limiting nutrient")
+plt.plot(annual["Year"], annual["Cost_reduction_total_USD"], marker="s", label="By-price (recommended)")
+plt.title("Annual Cost Reduction from Sediment Reuse (USD/year)")
+plt.ylabel("USD/year")
+plt.legend()
+plt.grid()
+plt.savefig(f"{plot_dir}/Cost_Reduction_Trend.png", dpi=300)
 plt.close()
-print(" Saved figure: Economic_Value_by_State_Dose.png")
 
-# ---- Plot 2: Fully replaced area (ha) per dose ----
+# --- 2. Limiting nutrient replacement ---
 plt.figure(figsize=(10,6))
-area_cols = [f"Ha_full_replaced_{d}" for d in dose_labels]
-area_melt = df.melt(id_vars="State", value_vars=area_cols,
-                    var_name="Dose", value_name="Ha_full_replaced")
-
-area_melt["Dose"] = area_melt["Dose"].str.extract("(\d+t)")
-
-sns.barplot(data=area_melt, x="State", y="Ha_full_replaced", hue="Dose")
-plt.title("Fully Fertilizer-Equivalent Area by State and Application Dose")
-plt.ylabel("Equivalent Fully Replaced Area (ha)")
-plt.xlabel("State")
-plt.legend(title="Application Dose")
-plt.tight_layout()
-plt.savefig("Output/FullReplacedArea_by_State_Dose.png", dpi=300)
+plt.plot(annual["Year"], annual["Percent_saved_total_pct"], marker="o", color="green")
+plt.title("Annual % of Fertilizer Demand Replaced (Limiting Nutrient)")
+plt.ylabel("% replaced")
+plt.ylim(0, 100)
+plt.grid()
+plt.savefig(f"{plot_dir}/Percent_Replacement_Trend.png", dpi=300)
 plt.close()
-print(" Saved figure: FullReplacedArea_by_State_Dose.png")
 
+# --- 3. Separate N and P replacement ---
+plt.figure(figsize=(10,6))
+plt.plot(annual["Year"], annual["Percent_saved_N"]*100, marker="o", color="blue", label="N replaced")
+plt.plot(annual["Year"], annual["Percent_saved_P"]*100, marker="o", color="orange", label="P replaced")
+plt.title("Annual Replacement Rate for N and P (%)")
+plt.ylabel("% replaced")
+plt.ylim(0, 100)
+plt.legend()
+plt.grid()
+plt.savefig(f"{plot_dir}/N_P_Replacement_Trend.png", dpi=300)
+plt.close()
+
+# --- 4. Cost reduction per hectare (by-price method) ---
+plt.figure(figsize=(10,6))
+plt.plot(annual["Year"], annual["Cost_reduction_per_ha"], marker="o", color="red")
+plt.title("Cost Reduction per Hectare Applied (USD/ha/year)")
+plt.ylabel("USD/ha/year")
+plt.grid()
+plt.savefig(f"{plot_dir}/Cost_Reduction_per_ha.png", dpi=300)
+plt.close()
+
+# --- 5. Applied N and P per hectare (new: shows the reuse-area basis) ---
+plt.figure(figsize=(10,6))
+plt.plot(annual["Year"], annual["N_applied_kg_per_ha"], marker="o", color="blue", label="N applied")
+plt.plot(annual["Year"], annual["P_applied_kg_per_ha"], marker="o", color="orange", label="P applied")
+plt.axhline(y=fert_N_need, color="blue", linestyle="--", alpha=0.5, label=f"N demand ({fert_N_need} kg/ha)")
+plt.axhline(y=fert_P_need, color="orange", linestyle="--", alpha=0.5, label=f"P demand ({fert_P_need} kg/ha)")
+plt.title("Applied N and P per Hectare (from sediment reuse)")
+plt.ylabel("kg/ha")
+plt.legend()
+plt.grid()
+plt.savefig(f"{plot_dir}/Applied_NP_Trend.png", dpi=300)
+plt.close()
+
+print(f"Saved plots to: {plot_dir}")
