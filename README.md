@@ -3,7 +3,7 @@
 **Author:** Mingyu Wang  
 **Course:** Sustainable Engineering Principles  
 **Date:** November 20, 2025  
-**Version:** 3.0 (Draft Report Version)
+**Version:** 3.0 (Final Report)
 
 ---
 
@@ -30,30 +30,44 @@ The core objectives were:
 
 ### 3.1 Data Source
 The analysis utilizes USGS storm event data (`All_EOF_StormEventLoadsRainCalculated.csv`), which includes:
--   **Runoff Volume**: Total water volume per storm event.
--   **Concentrations**: Raw concentrations (mg/L) of Total N, Total P, Orthophosphate, TKN, and Ammonia.
+-   **Runoff Volume**: Total water volume per storm event ($L$).
+-   **Concentrations**: Raw concentrations ($mg/L$) of Total N, Total P, Orthophosphate, TKN, and Ammonia.
 
 ### 3.2 Nutrient Partitioning (The "Particulate" Logic)
 A critical improvement in this analysis (v3.0) is the distinction between **dissolved** and **particulate** nutrients.
--   **Dissolved Nutrients** (e.g., Nitrate, Orthophosphate) stay in the water column and are lost during sediment dredging/dewatering.
+-   **Dissolved Nutrients** (e.g., Nitrate, Orthophosphate) stay in the water column and are lost during sediment dredging or dewatering.
 -   **Particulate Nutrients** (Sediment-bound) are the only fraction recoverable for solid reuse.
 
 We calculated the recoverable fraction as:
 $$ P_{particulate} = P_{Total (unfiltered)} - P_{Orthophosphate (dissolved)} $$
 $$ N_{particulate} = N_{TKN (unfiltered)} - N_{Ammonia+Ammonium (dissolved)} $$
 
+*Note: TKN (Total Kjeldahl Nitrogen) measures Organic N + Ammonia. Subtracting Ammonia isolates the Organic Particulate Nitrogen.*
+
 ### 3.3 Economic Valuation Models
-We applied two distinct economic models to assess viability:
+We applied two distinct economic models to assess viability.
 
-**Model A: Regional Fixed-Dose (General Assessment)**
--   **Assumption**: Sediment is applied at a standard rate of **20 tons/ha**.
--   **Calculation**: Value = (Recovered N/ha × Price N) + (Recovered P/ha × Price P).
--   **Purpose**: To see if "bulk" sediment reuse is economically attractive.
+#### Model A: Regional Fixed-Dose (General Assessment)
+This model assumes a standard application scenario for the entire region.
+-   **Application Rate**: 20 tons/ha ($20,000\ kg/ha$).
+-   **Nutrient Availability**:
+    -   Nitrogen: 50% ($Avail_N = 0.5$) - assumes mineralization of organic N.
+    -   Phosphorus: 80% ($Avail_P = 0.8$).
+-   **Value Calculation**:
+    $$ N_{applied} = Grade_N (g/kg) \times 20 (t/ha) $$
+    $$ N_{usable} = N_{applied} \times Avail_N $$
+    $$ Value_{N} = \min(N_{usable}, Demand_{N}) \times Price_{N} $$
+    *(Similar calculation for P)*
+    $$ Total\ Value = Value_{N} + Value_{P} $$
 
-**Model B: Site-Specific P-Limited (Optimized Assessment)**
--   **Assumption**: Application rate is dynamic, limited by the crop's Phosphorus demand (to avoid P runoff).
--   **Calculation**: Dose = Crop P Demand / Sediment P Content.
--   **Purpose**: To find high-grade sites where the sediment is potent enough to be a valuable fertilizer.
+#### Model B: Site-Specific P-Limited (Optimized Assessment)
+This model optimizes the dose for each specific site to maximize value without causing phosphorus runoff.
+-   **Constraint**: The dose is limited by the crop's Phosphorus demand ($22\ kg\ P/ha$).
+-   **Dynamic Dose Calculation**:
+    $$ Dose_{opt} (kg/ha) = \frac{Demand_{P}}{Grade_{P} \times Avail_{P}} $$
+    *(Capped at a physical limit of 100 tons/ha)*
+-   **Economic Value**:
+    Calculated using the $Dose_{opt}$ to determine total N and P savings per hectare.
 
 ---
 

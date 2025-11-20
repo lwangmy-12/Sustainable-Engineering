@@ -217,7 +217,7 @@ annual_region["kgP_recovered_per_ha_20t"] = annual_region["gP_recovered_per_ha_2
 annual_region["gN_recovered_per_ha_20t"] = annual_region["gN_per_kg_sediment"] * dose_kg_per_ha
 annual_region["kgN_recovered_per_ha_20t"] = annual_region["gN_recovered_per_ha_20t"] / 1000.0
 
-# 新增：颗粒态P/N年产量（kg/ha/year）
+# --- Particulate P/N yield trend (line plot) (kg/ha/year) ---
 annual_region["Particulate_P_kg_ha_yr"] = np.where(
     annual_region["Effective_Area_ha"] > 0,
     annual_region["Particulate_P_kg"] / annual_region["Effective_Area_ha"],
@@ -298,7 +298,7 @@ plt.grid()
 plt.savefig("Output/Particulate_PN_Total_Trend.png", dpi=300)
 plt.close()
 
-# --- 新增：颗粒态P/N年产量趋势（kg/ha/year）---
+# --- Particulate P/N yield trend (line plot)（kg/ha/year）---
 plt.figure(figsize=(10,6))
 plt.plot(annual_region["Year"], annual_region["Particulate_P_kg_ha_yr"], marker="o", color="purple", label="Particulate P Yield (kg/ha/year)")
 plt.plot(annual_region["Year"], annual_region["Particulate_N_kg_ha_yr"], marker="o", color="green", label="Particulate N Yield (kg/ha/year)")

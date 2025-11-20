@@ -112,7 +112,7 @@ annual["Cost_reduction_total_USD"] = (
 out_path = "Output/Annual_Region_Econ_Value.csv"
 annual.to_csv(out_path, index=False)
 
-# === 新增：输出经济分析年度数据到CSV，便于与图表匹配 ===
+# ===CSV===
 econ_trend_cols = [
     "Year", "ReuseArea_20t_ha",
     "N_applied_kg_per_ha", "P_applied_kg_per_ha",
@@ -155,7 +155,7 @@ plt.figure(figsize=(10,6))
 plt.plot(annual["Year"], annual["Percent_saved_total_pct"], marker="o", color="green")
 plt.title("Annual % of Fertilizer Demand Replaced (Limiting Nutrient)")
 plt.ylabel("% replaced")
-plt.ylim(0, 100)
+plt.ylim(0, 50)
 plt.grid()
 plt.savefig(f"{plot_dir}/Percent_Replacement_Trend.png", dpi=300)
 plt.close()
@@ -166,7 +166,7 @@ plt.plot(annual["Year"], annual["Percent_saved_N"]*100, marker="o", color="blue"
 plt.plot(annual["Year"], annual["Percent_saved_P"]*100, marker="o", color="orange", label="P replaced")
 plt.title("Annual Replacement Rate for N and P (%)")
 plt.ylabel("% replaced")
-plt.ylim(0, 100)
+plt.ylim(0, 50)
 plt.legend()
 plt.grid()
 plt.savefig(f"{plot_dir}/N_P_Replacement_Trend.png", dpi=300)
@@ -226,7 +226,7 @@ plt.plot(annual["Year"], (annual["N_usable_kg_per_ha"]/fert_N_need)*100, marker=
 plt.plot(annual["Year"], (annual["P_usable_kg_per_ha"]/fert_P_need)*100, marker="o", color="orange", label="% P demand met")
 plt.title("Percent of Crop Nutrient Demand Met by Recovered Nutrients (after availability)")
 plt.ylabel("% of demand")
-plt.ylim(0, 200)
+plt.ylim(0, 50)
 plt.legend()
 plt.grid()
 plt.savefig(f"{plot_dir}/Recovered_NP_pct_demand_20t.png", dpi=300)

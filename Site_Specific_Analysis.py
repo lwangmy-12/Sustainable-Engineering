@@ -132,10 +132,10 @@ os.makedirs("Output", exist_ok=True)
 output_cols = [
     "Rank", 
     "Years_Monitored",
-    "Avg_Annual_Load_kg",         # 每年能挖多少土 (Supply Mass)
-    "Optimized_Dose_kg_ha",       # 每公顷要填多少土 (Demand per ha)
-    "Potential_Reuse_Area_ha",    # 这一年能填满几公顷 (Supply Area) <--- NEW!
-    "Total_Value_USD_ha",         # 填满的一公顷值多少钱 (Value per ha)
+    "Avg_Annual_Load_kg",         # (Supply Mass)
+    "Optimized_Dose_kg_ha",       #  (Demand per ha)
+    "Potential_Reuse_Area_ha",    #  (Supply Area) <--- NEW!
+    "Total_Value_USD_ha",         #  (Value per ha)
     "Grade_N_g_kg", 
     "Grade_P_g_kg"
 ]
@@ -176,4 +176,22 @@ plt.tight_layout()
 plt.savefig("Output/Top_Sites_Sediment_Grade.png", dpi=300)
 plt.close()
 
-print("Saved plots: Top_Sites_Economic_Value.png, Top_Sites_Sediment_Grade.png")
+# Plot 3: Percent Replacement for Top Site (Best Case Scenario)
+# Calculate replacement % for the #1 ranked site
+best_site = top_sites.iloc[0]
+pct_N_replaced = (best_site["N_Available_kg_ha"] / FERT_N_NEED) * 100
+pct_P_replaced = (best_site["P_Available_kg_ha"] / FERT_P_NEED) * 100
+
+plt.figure(figsize=(6, 6))
+plt.bar(["Nitrogen", "Phosphorus"], [pct_N_replaced, pct_P_replaced], color=["#2ca02c", "#1f77b4"])
+plt.title(f"Nutrient Replacement Potential\nTop Site: {best_site.name}")
+plt.ylabel("% of Crop Demand Met")
+plt.ylim(0, 100) # Usually top sites can meet significant demand
+plt.grid(axis="y", linestyle="--", alpha=0.5)
+for i, v in enumerate([pct_N_replaced, pct_P_replaced]):
+    plt.text(i, v + 1, f"{v:.1f}%", ha="center", fontweight="bold")
+plt.tight_layout()
+plt.savefig("Output/Top_Site_Replacement_Pct.png", dpi=300)
+plt.close()
+
+print("Saved plots: Top_Sites_Economic_Value.png, Top_Sites_Sediment_Grade.png, Top_Site_Replacement_Pct.png")
