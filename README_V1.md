@@ -2,6 +2,7 @@
 **Author:** Mingyu Wang  
 **Project:** Sustainable Engineering Principles – Nutrient-Rich Sediment Reuse  
 **Date:** November 2025  
+**Version:** 1.0
 
 ---
 

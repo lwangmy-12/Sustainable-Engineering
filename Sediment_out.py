@@ -54,6 +54,46 @@ events["P_mass_kg"] = events["P_mass_mg"] / 1e6
 events["N_mass_kg"] = events["N_mass_mg"] / 1e6
 
 # ------------------------------------------------------------
+# 3.a Estimate particulate (sediment-associated) P and N
+# ------------------------------------------------------------
+# Columns available in dataset for improved partitioning
+orthophosphate_col = "orthophosphate_conc_mgL"  # dissolved reactive P (PO4) - stays in solution
+tkn_col = "total_Kjeldahl_nitrogen_unfiltered_conc_mgL"  # mostly particulate organic N + ammonium
+ammonia_col = "ammonia_plus_ammonium_conc_mgL"  # dissolved inorganic N (NH3/NH4)
+
+# Particulate P conc (mg/L) approximated as total_unfiltered - orthophosphate
+if orthophosphate_col in events.columns:
+    events["Particulate_P_conc_mgL"] = (events[P_conc].fillna(0) - events[orthophosphate_col].fillna(0)).clip(lower=0)
+else:
+    # fallback: assume all P is particulate (conservative) if orthophosphate missing
+    events["Particulate_P_conc_mgL"] = events[P_conc].fillna(0)
+
+# Particulate N conc (mg/L) approximated as TKN - ammonia (dissolved inorganic)
+if tkn_col in events.columns and ammonia_col in events.columns:
+    events["Particulate_N_conc_mgL"] = (events[tkn_col].fillna(0) - events[ammonia_col].fillna(0)).clip(lower=0)
+else:
+    # fallback: use total N concentration as an upper-bound
+    events["Particulate_N_conc_mgL"] = events[N_conc].fillna(0)
+
+# Particulate masses per event (mg -> kg)
+events["Particulate_P_mass_mg"] = events["Particulate_P_conc_mgL"] * Q
+events["Particulate_N_mass_mg"] = events["Particulate_N_conc_mgL"] * Q
+events["Particulate_P_mass_kg"] = events["Particulate_P_mass_mg"] / 1e6
+events["Particulate_N_mass_kg"] = events["Particulate_N_mass_mg"] / 1e6
+
+# Optional: particulate grams per kg sediment at event level (useful diagnostic)
+events["gP_per_kg_sediment_event"] = np.where(
+    events["Sediment_load_kg"] > 0,
+    events["Particulate_P_mass_kg"] / events["Sediment_load_kg"] * 1000.0,
+    np.nan
+)
+events["gN_per_kg_sediment_event"] = np.where(
+    events["Sediment_load_kg"] > 0,
+    events["Particulate_N_mass_kg"] / events["Sediment_load_kg"] * 1000.0,
+    np.nan
+)
+
+# ------------------------------------------------------------
 # 4. Merge site area
 # ------------------------------------------------------------
 df = events.merge(
@@ -69,66 +109,126 @@ annual = df.groupby(["USGS_Station_Number","Year"], as_index=False).agg({
     "Sediment_load_kg": "sum",
     "P_mass_kg": "sum",
     "N_mass_kg": "sum",
+    "Particulate_P_mass_kg": "sum",
+    "Particulate_N_mass_kg": "sum",
     "Area_ha": "first"
 })
 
 # ------------------------------------------------------------
-# 5.1 Identify VALID station-year
-# If both P and N concentrations missing → invalid
+# 5.1 Identify VALID station-year PER PARAMETER
 # ------------------------------------------------------------
-annual["Valid"] = ~(
-    df.groupby(["USGS_Station_Number","Year"])[[P_conc, N_conc]].mean().isna().all(axis=1)
-).values
+# Check if a station has valid data for each specific parameter in that year.
+# We use count() > 0: if there is at least one event with concentration data, it's valid.
+validity_check = df.groupby(["USGS_Station_Number", "Year"], as_index=False)[[P_conc, N_conc, sed_conc]].count()
 
-# Keep valid rows only (important!)
-annual_valid = annual[annual["Valid"]]
+# Rename columns to be clear boolean flags
+validity_check["Valid_P"] = validity_check[P_conc] > 0
+validity_check["Valid_N"] = validity_check[N_conc] > 0
+validity_check["Valid_Sed"] = validity_check[sed_conc] > 0
+
+# Merge these flags back into the annual dataframe
+annual = annual.merge(
+    validity_check[["USGS_Station_Number", "Year", "Valid_P", "Valid_N", "Valid_Sed"]],
+    on=["USGS_Station_Number", "Year"],
+    how="left"
+)
+
+# Fill NaN flags with False (safe fallback)
+annual["Valid_P"] = annual["Valid_P"].fillna(False)
+annual["Valid_N"] = annual["Valid_N"].fillna(False)
+annual["Valid_Sed"] = annual["Valid_Sed"].fillna(False)
 
 # ------------------------------------------------------------
-# 6. Annual regional totals using only valid stations in that year
+# 6. Annual regional totals using parameter-specific valid areas
 # ------------------------------------------------------------
-# Use VALID years only (from data that passed QC)
-years = sorted(annual_valid["Year"].dropna().unique())
-rows   = []
+years = sorted(annual["Year"].unique())
+rows = []
 
 for y in years:
-    sub = annual_valid[annual_valid["Year"] == y]
-
+    sub = annual[annual["Year"] == y]
+    
     if len(sub) == 0:
-        rows.append({
-            "Year": y,
-            "Effective_Area_ha": 0,
-            "Total_Sediment_kg": 0,
-            "Total_N_kg": 0,
-            "Total_P_kg": 0,
-            "Sediment_kg_ha_yr": None,
-            "N_kg_ha_yr": None,
-            "P_kg_ha_yr": None
-        })
         continue
 
-    # total area = area of valid stations
-    effective_area = sub["Area_ha"].sum()
+    # --- 1. Sediment Calculation ---
+    # Only sum mass and area for stations with valid sediment data
+    sub_sed = sub[sub["Valid_Sed"]]
+    eff_area_sed = sub_sed["Area_ha"].sum()
+    total_sed = sub_sed["Sediment_load_kg"].sum()
+    # Calculate Yield
+    sed_per_ha = total_sed / eff_area_sed if eff_area_sed > 0 else None
 
-    total_sed = sub["Sediment_load_kg"].sum()
-    total_N   = sub["N_mass_kg"].sum()
-    total_P   = sub["P_mass_kg"].sum()
+    # --- 2. Nitrogen Calculation ---
+    # Only sum mass and area for stations with valid N data
+    sub_N = sub[sub["Valid_N"]]
+    eff_area_N = sub_N["Area_ha"].sum()
+    total_N = sub_N["N_mass_kg"].sum()
+    total_particulate_N = sub_N["Particulate_N_mass_kg"].sum() if "Particulate_N_mass_kg" in sub.columns else 0.0
+    # Calculate Yield
+    N_per_ha = total_N / eff_area_N if eff_area_N > 0 else None
 
-    sed_per_ha = total_sed / effective_area if effective_area > 0 else None
-    N_per_ha   = total_N   / effective_area if effective_area > 0 else None
-    P_per_ha   = total_P   / effective_area if effective_area > 0 else None
-
+    # --- 3. Phosphorus Calculation ---
+    # Only sum mass and area for stations with valid P data
+    sub_P = sub[sub["Valid_P"]]
+    eff_area_P = sub_P["Area_ha"].sum()
+    total_P = sub_P["P_mass_kg"].sum()
+    total_particulate_P = sub_P["Particulate_P_mass_kg"].sum() if "Particulate_P_mass_kg" in sub.columns else 0.0
+    # Calculate Yield
+    P_per_ha = total_P / eff_area_P if eff_area_P > 0 else None
+    
+    # Note: We store eff_area_sed as the "primary" effective area for reference, 
+    # but N and P yields are calculated using their own specific areas.
     rows.append({
         "Year": y,
-        "Effective_Area_ha": effective_area,
+        "Effective_Area_ha": eff_area_sed, 
+        "Effective_Area_N_ha": eff_area_N, # Useful for debugging
+        "Effective_Area_P_ha": eff_area_P, # Useful for debugging
         "Total_Sediment_kg": total_sed,
         "Total_N_kg": total_N,
         "Total_P_kg": total_P,
+        "Particulate_P_kg": total_particulate_P,
+        "Particulate_N_kg": total_particulate_N,
         "Sediment_kg_ha_yr": sed_per_ha,
         "N_kg_ha_yr": N_per_ha,
         "P_kg_ha_yr": P_per_ha
     })
 
 annual_region = pd.DataFrame(rows)
+
+# ------------------------------------------------------------
+# 6.a Compute sediment "grade" (sediment-bound nutrient per dry mass)
+# Standardized to g nutrient per kg sediment (g/kg), and per-ha at 20 t/ha dose
+# ------------------------------------------------------------
+dose_kg_per_ha = 20000.0  # 20 t/ha
+annual_region["gP_per_kg_sediment"] = np.where(
+    annual_region["Total_Sediment_kg"] > 0,
+    annual_region["Particulate_P_kg"] / annual_region["Total_Sediment_kg"] * 1000.0,
+    np.nan
+)
+annual_region["gN_per_kg_sediment"] = np.where(
+    annual_region["Total_Sediment_kg"] > 0,
+    annual_region["Particulate_N_kg"] / annual_region["Total_Sediment_kg"] * 1000.0,
+    np.nan
+)
+
+# Recovered per hectare at 20 t/ha (g/ha and kg/ha)
+annual_region["gP_recovered_per_ha_20t"] = annual_region["gP_per_kg_sediment"] * dose_kg_per_ha
+annual_region["kgP_recovered_per_ha_20t"] = annual_region["gP_recovered_per_ha_20t"] / 1000.0
+annual_region["gN_recovered_per_ha_20t"] = annual_region["gN_per_kg_sediment"] * dose_kg_per_ha
+annual_region["kgN_recovered_per_ha_20t"] = annual_region["gN_recovered_per_ha_20t"] / 1000.0
+
+# 新增：颗粒态P/N年产量（kg/ha/year）
+annual_region["Particulate_P_kg_ha_yr"] = np.where(
+    annual_region["Effective_Area_ha"] > 0,
+    annual_region["Particulate_P_kg"] / annual_region["Effective_Area_ha"],
+    np.nan
+)
+annual_region["Particulate_N_kg_ha_yr"] = np.where(
+    annual_region["Effective_Area_ha"] > 0,
+    annual_region["Particulate_N_kg"] / annual_region["Effective_Area_ha"],
+    np.nan
+)
+
 
 annual_region.to_csv("Output/Annual_Region_Yields.csv", index=False)
 print("Created: Annual_Region_Yields.csv")
@@ -186,3 +286,38 @@ plt.savefig("Output/P_Yield_Trend.png", dpi=300)
 plt.close()
 
 print("Saved all annual trend plots.")
+
+# --- Particulate P/N total trend (line plot) ---
+plt.figure(figsize=(10,6))
+plt.plot(annual_region["Year"], annual_region["Particulate_P_kg"], marker="o", color="purple", label="Particulate P (kg)")
+plt.plot(annual_region["Year"], annual_region["Particulate_N_kg"], marker="o", color="green", label="Particulate N (kg)")
+plt.title("Annual Total Particulate Phosphorus and Nitrogen (kg/year)")
+plt.ylabel("kg/year")
+plt.legend()
+plt.grid()
+plt.savefig("Output/Particulate_PN_Total_Trend.png", dpi=300)
+plt.close()
+
+# --- 新增：颗粒态P/N年产量趋势（kg/ha/year）---
+plt.figure(figsize=(10,6))
+plt.plot(annual_region["Year"], annual_region["Particulate_P_kg_ha_yr"], marker="o", color="purple", label="Particulate P Yield (kg/ha/year)")
+plt.plot(annual_region["Year"], annual_region["Particulate_N_kg_ha_yr"], marker="o", color="green", label="Particulate N Yield (kg/ha/year)")
+plt.title("Annual Particulate P and N Yield (kg/ha/year)")
+plt.ylabel("kg/ha/year")
+plt.legend()
+plt.grid()
+plt.savefig("Output/Particulate_PN_Yield_Trend.png", dpi=300)
+plt.close()
+
+# --- Sediment grade bar chart (g/kg, per year) ---
+plt.figure(figsize=(10,6))
+bar_width = 0.4
+years = annual_region["Year"]
+plt.bar(years - bar_width/2, annual_region["gP_per_kg_sediment"], width=bar_width, color="purple", label="gP/kg sediment")
+plt.bar(years + bar_width/2, annual_region["gN_per_kg_sediment"], width=bar_width, color="green", label="gN/kg sediment")
+plt.title("Sediment Grade: Particulate P and N per kg Sediment (g/kg)")
+plt.ylabel("g nutrient / kg sediment")
+plt.legend()
+plt.grid()
+plt.savefig("Output/Sediment_Grade_Bar.png", dpi=300)
+plt.close()
