@@ -12,7 +12,7 @@ annual = pd.read_csv("Output/Annual_Region_Yields.csv")
 # ============================================================
 # 2. Dose assumption (20 t/ha = 20,000 kg/ha)
 # ============================================================
-DOSE_KG_PER_HA = 80000
+DOSE_KG_PER_HA = 20000
 
 # ============================================================
 # 3. Compute reuse potential per year
