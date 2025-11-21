@@ -83,8 +83,8 @@ PRICE_N = 1.89
 PRICE_P = 5.37          
 FERT_N_NEED = 150       
 FERT_P_NEED = 22        
-AVAIL_N = 0.4
-AVAIL_P = 0.8
+AVAIL_N = 0.8 * 0.5
+AVAIL_P = 0.8 * 0.8
 
 # Step A: Effective P content
 site_stats["Effective_P_content"] = (site_stats["Grade_P_g_kg"] / 1000) * AVAIL_P
