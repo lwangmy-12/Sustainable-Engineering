@@ -26,9 +26,8 @@ annual["ReuseArea_20t_ha"] = annual["ReuseArea_20t_ha"].fillna(0)
 # ============================================================
 # 4. Save output
 # ============================================================
-# 4. Save output（包含颗粒态N/P每公顷回收量）
+
 out_path = "Output/Annual_Region_Reuse_Potential.csv"
-# 只保留相关列，便于下游经济分析
 cols_to_save = [
     "Year", "Total_Sediment_kg", "ReuseArea_20t_ha",
     "kgP_recovered_per_ha_20t", "kgN_recovered_per_ha_20t"
